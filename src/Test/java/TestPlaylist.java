@@ -14,6 +14,8 @@ import edu.ithaca.dragon.autodj.data.SongDataIO;
 
 public class TestPlaylist {
 
+
+    
     public Playlist sampleSongs() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         Playlist myPlaylist = new ArrayPlaylist(50);
@@ -22,7 +24,7 @@ public class TestPlaylist {
         }
         return myPlaylist;
     }
-
+    
     /**
      * @return return a string representing all songs in the playlist
     * @throws IOException 
@@ -31,7 +33,14 @@ public class TestPlaylist {
     public void testAllSongs() throws IOException{
         Playlist myPlaylist = sampleSongs();
 
-        assertEquals(50, myPlaylist.allSongs());
+        assertEquals("Resonate, Traveling Man, Plantation, Who Paid Them Off?, New Fashion, The Gold (Dubmatix Runnin' Remix)," + //
+                        "Give Yourself Over, Garden Tree, High Grade, Pure Fire (Disco Mix), Make You Happy, Goodbye - Sim Redmond Band Remix," + //
+                        "8 Track Mind, In the Dark, Beautiful People, Biggie K - Donna The Buffalo Remix, Open My Eyes," + //
+                        "Come With Us, Life Is Water, Hurricane, Holes In The Ground, Good Thoughts, Pink Guitar, All Is Not Lost," + //
+                        "Save Me, All I Ever Want, Breakdown, Nothing I Can Do, Trampoline, Bliss Seeker, Yin Yang Boomerang," + //
+                        "Hey Boy, Where Are the Monsters, Big Red Button, New Persona, Runnin' Round, Talk, Velvet Rope," + //
+                        "Positive Friction, No Place Like The Right Time, Heaven & the Earth, Motor, Dance in the Street," + //
+                        "Seminole Wind, Locket And Key, I Believe, Across the Way, Holding on to Nothing, Unsteady, Renegades", myPlaylist.allSongs());
     }
 
     /**
@@ -81,3 +90,16 @@ public class TestPlaylist {
     
     
 }
+
+/* 
+        
+Resonate, Traveling Man, Plantation, Who Paid Them Off?, New Fashion, The Gold (Dubmatix Runnin' Remix),
+Give Yourself Over, Garden Tree, High Grade, Pure Fire (Disco Mix), Make You Happy, Goodbye - Sim Redmond Band Remix,
+8 Track Mind, In the Dark, Beautiful People, Biggie K - Donna The Buffalo Remix, Open My Eyes,
+Come With Us, Life Is Water, Hurricane, Holes In The Ground, Good Thoughts, Pink Guitar, All Is Not Lost,
+Save Me, All I Ever Want, Breakdown, Nothing I Can Do, Trampoline, Bliss Seeker, Yin Yang Boomerang,
+Hey Boy, Where Are the Monsters, Big Red Button, New Persona, Runnin' Round, Talk, Velvet Rope,
+Positive Friction, No Place Like The Right Time, Heaven & the Earth, Motor, Dance in the Street,
+Seminole Wind, Locket And Key, I Believe, Across the Way, Holding on to Nothing, Unsteady, Renegades,
+*/
+        

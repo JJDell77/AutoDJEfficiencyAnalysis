@@ -18,7 +18,7 @@ public class SongDataIOTest {
         assertEquals(97350, allSongs.size());
         assertEquals("Resonate", allSongs.get(0).getTitle());
         System.out.println("Sample From json:");
-        for (int i=0; i<10; i++){
+        for (int i=0; i<50; i++){
             System.out.println(allSongs.get(i));
         }
     }
