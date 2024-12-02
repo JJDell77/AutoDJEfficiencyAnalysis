@@ -27,7 +27,7 @@ public class TestPlaylist {
 
     public ArrayList<Song> otherSongs() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
-        ArrayList<Song> mylist = new ArrayList<>();
+        ArrayList<Song> mylist = new ArrayList<>(5);
         for (int i=50; i<5; i++){
             mylist.add(allSongs.get(i));
         }
@@ -42,14 +42,56 @@ public class TestPlaylist {
     public void testAllSongs() throws IOException{
         Playlist myPlaylist = sampleSongs();
 
-        assertEquals("Resonate, Traveling Man, Plantation, Who Paid Them Off?, New Fashion, The Gold (Dubmatix Runnin' Remix)," + //
-                        "Give Yourself Over, Garden Tree, High Grade, Pure Fire (Disco Mix), Make You Happy, Goodbye - Sim Redmond Band Remix," + //
-                        "8 Track Mind, In the Dark, Beautiful People, Biggie K - Donna The Buffalo Remix, Open My Eyes," + //
-                        "Come With Us, Life Is Water, Hurricane, Holes In The Ground, Good Thoughts, Pink Guitar, All Is Not Lost," + //
-                        "Save Me, All I Ever Want, Breakdown, Nothing I Can Do, Trampoline, Bliss Seeker, Yin Yang Boomerang," + //
-                        "Hey Boy, Where Are the Monsters, Big Red Button, New Persona, Runnin' Round, Talk, Velvet Rope," + //
-                        "Positive Friction, No Place Like The Right Time, Heaven & the Earth, Motor, Dance in the Street," + //
-                        "Seminole Wind, Locket And Key, I Believe, Across the Way, Holding on to Nothing, Unsteady, Renegades", myPlaylist.allSongs());
+        assertEquals("Resonate\n" +
+             "Traveling Man\n" +
+             "Plantation\n" +
+             "Who Paid Them Off?\n" +
+             "New Fashion\n" +
+             "The Gold (Dubmatix Runnin' Remix)\n" +
+             "Give Yourself Over\n" +
+             "Garden Tree\n" +
+             "High Grade\n" +
+             "Pure Fire (Disco Mix)\n" +
+             "Make You Happy\n" +
+             "Goodbye - Sim Redmond Band Remix\n" +
+             "8 Track Mind\n" +
+             "In the Dark\n" +
+             "Beautiful People\n" +
+             "Biggie K - Donna The Buffalo Remix\n" +
+             "Open My Eyes\n" +
+             "Come With Us\n" +
+             "Life Is Water\n" +
+             "Hurricane\n" +
+             "Holes In The Ground\n" +
+             "Good Thoughts\n" +
+             "Pink Guitar\n" +
+             "All Is Not Lost\n" +
+             "Save Me\n" +
+             "All I Ever Want\n" +
+             "Breakdown\n" +
+             "Nothing I Can Do\n" +
+             "Trampoline\n" +
+             "Bliss Seeker\n" +
+             "Yin Yang Boomerang\n" +
+             "Hey Boy\n" +
+             "Where Are the Monsters\n" +
+             "Big Red Button\n" +
+             "New Persona\n" +
+             "Runnin' Round\n" +
+             "Talk\n" +
+             "Velvet Rope\n" +
+             "Positive Friction\n" +
+             "No Place Like The Right Time\n" +
+             "Heaven & the Earth\n" +
+             "Motor\n" +
+             "Dance in the Street\n" +
+             "Seminole Wind\n" +
+             "Locket And Key\n" +
+             "I Believe\n" +
+             "Across the Way\n" +
+             "Holding on to Nothing\n" +
+             "Unsteady\n" +
+             "Renegades\n", myPlaylist.allSongs());
     }
 
     /**
@@ -85,7 +127,7 @@ public class TestPlaylist {
         myPlaylist.add(testSongs.get(3));
         myPlaylist.add(testSongs.get(4));
         
-        assertEquals(myPlaylist.isEmpty(), false);
+        assertEquals(false, myPlaylist.isEmpty());
 
         myPlaylist.add(testSongs.get(0));
         myPlaylist.add(testSongs.get(1));
@@ -93,7 +135,7 @@ public class TestPlaylist {
         myPlaylist.add(testSongs.get(3));
         myPlaylist.add(testSongs.get(4));
 
-        assertEquals(myPlaylist.isEmpty(), true);
+        assertEquals(true, myPlaylist.isEmpty());
     }
 
     /**
