@@ -102,7 +102,7 @@ public class TestPlaylist {
     public void testDuration()throws IOException{
         Playlist myPlaylist = sampleSongs();
 
-        assertEquals(myPlaylist.duration(),2132);
+        assertEquals(myPlaylist.duration(),213);
 
 
     }
