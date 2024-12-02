@@ -24,6 +24,15 @@ public class TestPlaylist {
         }
         return myPlaylist;
     }
+
+    public Playlist otherSongs() throws IOException{
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+        Playlist myPlaylist = new ArrayPlaylist(5);
+        for (int i=50; i<5; i++){
+            myPlaylist.add(allSongs.get(i));
+        }
+        return myPlaylist;
+    }
     
     /**
      * @return return a string representing all songs in the playlist
@@ -75,8 +84,12 @@ public class TestPlaylist {
      * 
      */
     @Test
-    public void TestAdd(){
-        throw new NoSuchElementException("Not implemented");
+    public void TestAdd() throws IOException{
+        Playlist myPlaylist = sampleSongs();
+        Playlist testSongs = otherSongs();
+
+        myPlaylist.add(otherSongs().get(0));
+
     }
 
     /**
