@@ -69,9 +69,11 @@ public class ArrayPlaylist implements Playlist {
             throw new IllegalArgumentException("Song cannot be null");
         }
         boolean removed = playlist.remove(song); 
+
         if (removed) {
             size--; 
-        } else {
+        } 
+        else {
             throw new IllegalArgumentException("Song not found in the playlist");
         }
     }
