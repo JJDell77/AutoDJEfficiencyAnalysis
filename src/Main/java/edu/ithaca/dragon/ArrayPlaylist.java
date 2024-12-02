@@ -14,7 +14,9 @@ public class ArrayPlaylist implements Playlist {
     // QUINN
     @Override
     public String allSongs() {
+
         StringBuilder allSongsString = new StringBuilder();
+
         for (int songIndex = 0; songIndex < this.size; songIndex++) {
             Song currentSong = playlist.get(songIndex);
             allSongsString.append(currentSong.getTitle()).append("\n");
@@ -25,15 +27,24 @@ public class ArrayPlaylist implements Playlist {
     // QUINN
     @Override
     public int duration() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'duration'");
+        int totalDuration = 0;
+        for (Song song: playlist){
+            int songLength = song.getDuration();
+            totalDuration += songLength;
+        }
+        return totalDuration;
     }
     // QUINN
     @Override
     public String playNext() {
-        Song currentSong = playlist.get(0);
-        Song nextSong = playlist.nextIndex();
+        if (size == 0) {
+            return "The playlist is empty.";
+        }
 
+        Song nextSong = playlist.remove(0);
+        size--;
+        
+        return "Now playing: " + nextSong.getTitle();
     }
     //JJ
     @Override
