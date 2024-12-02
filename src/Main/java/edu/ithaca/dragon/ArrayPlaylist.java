@@ -44,8 +44,8 @@ public class ArrayPlaylist implements Playlist {
     //JJ
     @Override
     public void add(Song song) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+        playlist.add(this.size, song);
+        size++;
     }
     //JJ
     @Override
