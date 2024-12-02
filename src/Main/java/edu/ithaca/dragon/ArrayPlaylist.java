@@ -32,7 +32,7 @@ public class ArrayPlaylist implements Playlist {
             int songLength = song.getDuration();
             totalDuration += songLength;
         }
-        return totalDuration;
+        return totalDuration/6000;
     }
     // QUINN
     @Override
