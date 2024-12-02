@@ -25,13 +25,13 @@ public class TestPlaylist {
         return myPlaylist;
     }
 
-    public Playlist otherSongs() throws IOException{
+    public ArrayList<Song> otherSongs() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
-        Playlist myPlaylist = new ArrayPlaylist(5);
+        ArrayList<Song> mylist = new ArrayList<>();
         for (int i=50; i<5; i++){
-            myPlaylist.add(allSongs.get(i));
+            mylist.add(allSongs.get(i));
         }
-        return myPlaylist;
+        return mylist;
     }
     
     /**
@@ -86,9 +86,9 @@ public class TestPlaylist {
     @Test
     public void TestAdd() throws IOException{
         Playlist myPlaylist = sampleSongs();
-        Playlist testSongs = otherSongs();
+        ArrayList<Song> testSongs = otherSongs();
 
-        myPlaylist.add(otherSongs().get(0));
+        myPlaylist.add(testSongs.get(0));
 
     }
 
