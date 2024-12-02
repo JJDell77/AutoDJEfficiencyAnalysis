@@ -49,8 +49,12 @@ public class ArrayPlaylist implements Playlist {
     //JJ
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+        if (size == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     //JJ
     @Override

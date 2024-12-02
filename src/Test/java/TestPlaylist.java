@@ -75,8 +75,25 @@ public class TestPlaylist {
      * 
      */
     @Test
-    public void testIsEmpty(){
-        throw new NoSuchElementException("Not implemented");
+    public void testIsEmpty() throws IOException{
+        Playlist myPlaylist = new ArrayPlaylist(10);
+        ArrayList<Song> testSongs = otherSongs();
+
+        myPlaylist.add(testSongs.get(0));
+        myPlaylist.add(testSongs.get(1));
+        myPlaylist.add(testSongs.get(2));
+        myPlaylist.add(testSongs.get(3));
+        myPlaylist.add(testSongs.get(4));
+        
+        assertEquals(myPlaylist.isEmpty(), false);
+
+        myPlaylist.add(testSongs.get(0));
+        myPlaylist.add(testSongs.get(1));
+        myPlaylist.add(testSongs.get(2));
+        myPlaylist.add(testSongs.get(3));
+        myPlaylist.add(testSongs.get(4));
+
+        assertEquals(myPlaylist.isEmpty(), true);
     }
 
     /**
@@ -85,10 +102,16 @@ public class TestPlaylist {
      */
     @Test
     public void TestAdd() throws IOException{
-        Playlist myPlaylist = sampleSongs();
+        Playlist myPlaylist = new ArrayPlaylist(10);
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
+        myPlaylist.add(testSongs.get(1));
+        myPlaylist.add(testSongs.get(2));
+        myPlaylist.add(testSongs.get(3));
+        myPlaylist.add(testSongs.get(4));
+        
+        assertEquals(myPlaylist, testSongs);
 
     }
 
