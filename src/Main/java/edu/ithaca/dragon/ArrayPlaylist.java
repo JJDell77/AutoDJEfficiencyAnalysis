@@ -65,8 +65,15 @@ public class ArrayPlaylist implements Playlist {
     //JJ
     @Override
     public void remove(Song song) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        if (song == null) {
+            throw new IllegalArgumentException("Song cannot be null");
+        }
+        boolean removed = playlist.remove(song); 
+        if (removed) {
+            size--; 
+        } else {
+            throw new IllegalArgumentException("Song not found in the playlist");
+        }
     }
     
 }
