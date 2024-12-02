@@ -99,8 +99,12 @@ public class TestPlaylist {
      * @throws NoSuchElementException if the Queue is empty
      */
     @Test
-    public void testDuration(){
-        throw new NoSuchElementException("Not implemented");
+    public void testDuration()throws IOException{
+        Playlist myPlaylist = sampleSongs();
+
+        assertEquals(myPlaylist.duration(),2132);
+
+
     }
 
     /**
@@ -108,7 +112,7 @@ public class TestPlaylist {
      * @return song info
      */
     @Test
-    public void testPlayNext(){
+    public void testPlayNext() throws IOException{
         throw new NoSuchElementException("Not implemented");
     }
 
@@ -162,7 +166,7 @@ public class TestPlaylist {
      * 
      */
     @Test
-    public void TestRemove(){
+    public void TestRemove() throws IOException{
         throw new NoSuchElementException("Not implemented");
     }
     
