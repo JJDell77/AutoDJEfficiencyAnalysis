@@ -1,5 +1,5 @@
 package edu.ithaca.dragon;
 
-public class Library {
+public interface Library {
     
 }
