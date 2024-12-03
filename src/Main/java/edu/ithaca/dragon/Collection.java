@@ -1,5 +1,5 @@
 package edu.ithaca.dragon;
 
-public class PlaylistOfPlaylist {
+public class Collection {
     
 }
