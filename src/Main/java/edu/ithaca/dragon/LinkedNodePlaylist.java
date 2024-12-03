@@ -1,8 +1,17 @@
 package edu.ithaca.dragon;
 
+import java.util.LinkedList;
+
 import edu.ithaca.dragon.autodj.Song;
 
 public class LinkedNodePlaylist implements Playlist {
+
+    private LinkedList<Song> playlist;
+
+    public LinkedNodePlaylist(){
+        this.playlist = playlist;
+        
+    }
 
     @Override
     public String allSongs() {
