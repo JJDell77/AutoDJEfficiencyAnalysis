@@ -1,6 +1,8 @@
 package edu.ithaca.dragon;
 
 
+import java.util.NoSuchElementException;
+
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.io.LinkedNode;
 
@@ -42,14 +44,22 @@ public class LinkedNodePlaylist implements Playlist {
 
     @Override
     public Song playNext() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playNext'");
+        LinkedNode<Song> current = front;
+        if (current == null){
+            throw new NoSuchElementException("No Songs available");
+        }
+        front = front.getNext();
+        return current.getItem();
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+        if (front == null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
@@ -71,14 +81,44 @@ public class LinkedNodePlaylist implements Playlist {
 
     @Override
     public void remove(Song song) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        if (front == null) {
+            throw new IllegalArgumentException("Song not found in the playlist.");
+        }
+    
+        if (front.getItem() == song) {
+            front = front.getNext();
+            return;
+        }
+        
+        LinkedNode<Song> current = front;
+        boolean found = false;
+        while (current.getNext() != null){
+            LinkedNode<Song> nextNode = current.getNext();
+            if (nextNode.getItem().equals(song) && found == false) {
+                current.setNext(nextNode.getNext()); 
+                found = true;
+            }
+
+            
+            current = nextNode;
+        }
+        if (found == false){
+            throw new IllegalArgumentException("Song not found in the playlist.");
+        }
     }
+    
 
     @Override
     public boolean contains(Song song) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        LinkedNode<Song> current = front;
+
+        while (current != null){
+            if (current.getItem() == song){
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
     }
     
 }
