@@ -140,7 +140,7 @@ public class TestPlaylist {
         myPlaylist.add(testSongs.get(3));
         myPlaylist.add(testSongs.get(4));
         
-        assertEquals(false, myPlaylist.isEmpty());
+        assertFalse(myPlaylist.isEmpty());
 
         myPlaylist.remove(testSongs.get(0));
         myPlaylist.remove(testSongs.get(1));
@@ -148,7 +148,7 @@ public class TestPlaylist {
         myPlaylist.remove(testSongs.get(3));
         myPlaylist.remove(testSongs.get(4));
 
-        assertEquals(true, myPlaylist.isEmpty());
+        assertTrue(myPlaylist.isEmpty());
     }
 
     /**
