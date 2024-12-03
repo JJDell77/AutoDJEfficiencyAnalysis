@@ -29,8 +29,15 @@ public class LinkedNodePlaylist implements Playlist {
 
     @Override
     public int duration() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'duration'");
+        int totalDuration = 0;
+
+        LinkedNode<Song> current = front;
+        while (current != null){
+            int songLength = current.getItem().getDuration();
+            totalDuration += songLength;
+            current = current.getNext();
+        }
+        return totalDuration/60000;
     }
 
     @Override
