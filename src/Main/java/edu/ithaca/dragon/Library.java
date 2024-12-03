@@ -28,3 +28,4 @@ void importCollection(Collection collection);
 void discontinueCollection(Collection collection);
 
 }
+
