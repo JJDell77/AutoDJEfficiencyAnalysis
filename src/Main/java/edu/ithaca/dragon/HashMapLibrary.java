@@ -1,19 +1,46 @@
 package edu.ithaca.dragon;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.NoSuchElementException;
 
 import javax.management.RuntimeErrorException;
 
 import edu.ithaca.dragon.autodj.Song;
 
-public class HashMapLibrary implements Library{
-    
+public class HashMapLibrary implements Library {
+
+private HashMap<String, HashMap<String,Integer>> library; 
+
+public HashMapLibrary(){
+
+    this.library = new HashMap<>();
+   
+}
 /*
  * @return a string representing all songs in the library in alphabetical order 
  * (by artist first, then by song title)
  */
 public String allSongsAndArtists(){
-    throw new RuntimeErrorException(null, "Not Implemented.");
+    StringBuilder allSongs = new StringBuilder();
+
+        List<String> artists = new ArrayList<>(library.keySet());
+        Collections.sort(artists);
+
+        for (String artist : artists) {
+            HashMap<String, Integer> songs = library.get(artist);
+
+            if (songs != null) {
+                List<String> songTitles = new ArrayList<>(songs.keySet());
+                Collections.sort(songTitles);
+
+                for (String song : songTitles) {
+                    allSongs.append(artist).append(" - ").append(song).append("\n");
+                }
+            }
+        }
+        return allSongs.toString().trim(); 
 }
 
 /*
@@ -21,7 +48,12 @@ public String allSongsAndArtists(){
  * Retrieve information about a song within the library
  */
 public String songInfoString(Song song){
-    throw new RuntimeErrorException(null, "Not Implemented.");
+    StringBuilder songInfo = new StringBuilder();
+    songInfo.append(song.toString()).append("-\n");
+    songInfo.append(song.getDuration()).append("\n");
+    songInfo.append(song.getPlayCount()).append("\n");
+    songInfo.append(song.getSpotifyDanceability()).append("\n");
+    return songInfo.toString();
 }
 
 /*
