@@ -16,7 +16,7 @@ import edu.ithaca.dragon.Playlist;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
-public class TestPlaylist {
+public class TestArrayPlaylist {
 
 
     
