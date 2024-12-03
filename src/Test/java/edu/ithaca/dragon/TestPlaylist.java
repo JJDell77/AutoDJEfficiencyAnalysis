@@ -103,16 +103,21 @@ public class TestPlaylist {
      * @throws NoSuchElementException if the Queue is empty
      */
     @Test
-    public void testDuration() throws IOException{
+    public void testDuration()throws IOException{
         Playlist myPlaylist = sampleSongs();
-    
-        assertEquals(2132, myPlaylist.duration());     }
 
+        assertEquals(myPlaylist.duration(),213);
+
+
+    }
+
+  
     /**
      * @post play next song and removes it from the playlist
      * @return song info
      */
     @Test
+
     public void testPlayNext() throws IOException {
         Playlist myPlaylist = new ArrayPlaylist(10);
         ArrayList<Song> testSongs = otherSongs();
