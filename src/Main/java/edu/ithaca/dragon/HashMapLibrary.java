@@ -6,7 +6,7 @@ import javax.management.RuntimeErrorException;
 
 import edu.ithaca.dragon.autodj.Song;
 
-public class HashMapLibrary {
+public class HashMapLibrary implements Library{
     
 /*
  * @return a string representing all songs in the library in alphabetical order 
