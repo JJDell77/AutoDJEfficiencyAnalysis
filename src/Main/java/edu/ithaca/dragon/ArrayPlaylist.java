@@ -1,5 +1,7 @@
 package edu.ithaca.dragon;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
 import edu.ithaca.dragon.autodj.Song;
 
 public class ArrayPlaylist implements Playlist {
@@ -36,15 +38,16 @@ public class ArrayPlaylist implements Playlist {
     }
     // QUINN
     @Override
-    public String playNext() {
+    public Song playNext() {
         if (size == 0) {
-            return "The playlist is empty.";
+            throw new NoSuchElementException("No Songs available");
         }
 
-        Song nextSong = playlist.remove(0);
+        Song nextSong = playlist.get(0);
+        playlist.remove(0);
         size--;
         
-        return "Now playing: " + nextSong.getTitle();
+        return nextSong;
     }
     //JJ
     @Override
@@ -77,5 +80,10 @@ public class ArrayPlaylist implements Playlist {
             throw new IllegalArgumentException("Song not found in the playlist");
         }
     }
+
+    public boolean contains(Song song) {
+        return playlist.contains(song);
+    }
+    
     
 }

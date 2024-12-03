@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -100,17 +102,27 @@ public class TestPlaylist {
      * @throws NoSuchElementException if the Queue is empty
      */
     @Test
-    public void testDuration(){
-        throw new NoSuchElementException("Not implemented");
-    }
+    public void testDuration() throws IOException{
+        Playlist myPlaylist = sampleSongs();
+    
+        assertEquals(2132, myPlaylist.duration());     }
 
     /**
      * @post play next song and removes it from the playlist
      * @return song info
      */
     @Test
-    public void testPlayNext(){
-        throw new NoSuchElementException("Not implemented");
+    public void testPlayNext() throws IOException {
+        Playlist myPlaylist = new ArrayPlaylist(10);
+        ArrayList<Song> testSongs = otherSongs();
+
+        myPlaylist.add(testSongs.get(0));
+        
+        myPlaylist.playNext();  
+    
+        assertTrue(myPlaylist.isEmpty());
+        
+        assertThrows(NoSuchElementException.class, () -> myPlaylist.playNext(), "No Songs available");  
     }
 
     /**
@@ -168,22 +180,29 @@ public class TestPlaylist {
      * 
      */
     @Test
-    public void TestRemove(){
-        throw new NoSuchElementException("Not implemented");
+    public void testRemove() throws IOException {
+        Playlist myPlaylist = new ArrayPlaylist(10);  
+        ArrayList<Song> testSongs = otherSongs();     
+
+        myPlaylist.add(testSongs.get(0));
+        myPlaylist.add(testSongs.get(1));
+        myPlaylist.add(testSongs.get(2));
+
+        assertFalse(myPlaylist.isEmpty());
+
+        myPlaylist.remove(testSongs.get(1));
+
+        assertFalse(myPlaylist.contains(testSongs.get(1)));
+
+        assertTrue(myPlaylist.contains(testSongs.get(0)));
+        assertTrue(myPlaylist.contains(testSongs.get(2)));
+
+        // Try to remove a song that does not exist and assert that it throws an exception
+        assertThrows(IllegalArgumentException.class, () -> myPlaylist.remove(testSongs.get(4)), "Song not found in the playlist.");
     }
+
     
     
 }
 
-/* 
-        
-Resonate, Traveling Man, Plantation, Who Paid Them Off?, New Fashion, The Gold (Dubmatix Runnin' Remix),
-Give Yourself Over, Garden Tree, High Grade, Pure Fire (Disco Mix), Make You Happy, Goodbye - Sim Redmond Band Remix,
-8 Track Mind, In the Dark, Beautiful People, Biggie K - Donna The Buffalo Remix, Open My Eyes,
-Come With Us, Life Is Water, Hurricane, Holes In The Ground, Good Thoughts, Pink Guitar, All Is Not Lost,
-Save Me, All I Ever Want, Breakdown, Nothing I Can Do, Trampoline, Bliss Seeker, Yin Yang Boomerang,
-Hey Boy, Where Are the Monsters, Big Red Button, New Persona, Runnin' Round, Talk, Velvet Rope,
-Positive Friction, No Place Like The Right Time, Heaven & the Earth, Motor, Dance in the Street,
-Seminole Wind, Locket And Key, I Believe, Across the Way, Holding on to Nothing, Unsteady, Renegades,
-*/
         
