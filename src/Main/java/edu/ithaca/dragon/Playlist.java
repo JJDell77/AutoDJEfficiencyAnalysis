@@ -22,7 +22,7 @@ public interface Playlist {
      * @post play next song and removes it from the playlist
      * @return song info
      */
-    String playNext();
+    Song playNext();
 
     /**
      * @return true if there are no songs in the playlist
@@ -41,5 +41,11 @@ public interface Playlist {
      * 
      */
     void remove(Song song);
+
+    /**
+     * @return true if song is present in the playlist
+     */
+    boolean contains(Song song);
+    
     
 }
