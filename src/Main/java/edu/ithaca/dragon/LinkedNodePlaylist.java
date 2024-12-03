@@ -1,22 +1,30 @@
 package edu.ithaca.dragon;
 
-import java.util.LinkedList;
 
 import edu.ithaca.dragon.autodj.Song;
+import edu.ithaca.dragon.io.LinkedNode;
 
 public class LinkedNodePlaylist implements Playlist {
 
-    private LinkedList<Song> playlist;
+    private LinkedNode<Song> front;
 
     public LinkedNodePlaylist(){
-        this.playlist = playlist;
-        
+        this.front = null;
     }
 
     @Override
     public String allSongs() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'allSongs'");
+
+        StringBuilder allSongsString = new StringBuilder();
+
+        LinkedNode<Song> current = front;
+
+        while (current != null) {
+            Song currentSong = current.getItem();
+            allSongsString.append(currentSong.getTitle()).append("\n");
+            current = current.getNext();
+        }
+        return allSongsString.toString();
     }
 
     @Override
@@ -39,8 +47,19 @@ public class LinkedNodePlaylist implements Playlist {
 
     @Override
     public void add(Song song) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+        
+        if (front == null){
+            front = new LinkedNode<Song>(song);
+        }
+        
+        else{
+            LinkedNode<Song> current = front;
+
+            while (current.getNext() != null){
+                current = current.getNext();
+            }
+            current.setNext(new LinkedNode<Song>(song));
+        }
     }
 
     @Override

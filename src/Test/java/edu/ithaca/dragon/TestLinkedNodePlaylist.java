@@ -116,7 +116,7 @@ public class TestLinkedNodePlaylist {
     @Test
 
     public void testPlayNext() throws IOException {
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new LinkedNodePlaylist();
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -134,7 +134,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void testIsEmpty() throws IOException{
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new LinkedNodePlaylist();
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -160,7 +160,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void TestAdd() throws IOException{
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new LinkedNodePlaylist();
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -184,7 +184,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void testRemove() throws IOException {
-        Playlist myPlaylist = new ArrayPlaylist(10);  
+        Playlist myPlaylist = new LinkedNodePlaylist();  
         ArrayList<Song> testSongs = otherSongs();     
 
         myPlaylist.add(testSongs.get(0));
