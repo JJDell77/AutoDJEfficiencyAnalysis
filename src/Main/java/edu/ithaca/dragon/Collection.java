@@ -3,6 +3,11 @@ package edu.ithaca.dragon;
 public interface Collection {
 
     /**
+     * @post adds a playlist of songs to the collection
+     */
+    void addPlaylist(Playlist playlist);
+    
+    /**
      * @return a string representing all playlist names and their durations
      */
     String playlistNamesAndDurations();

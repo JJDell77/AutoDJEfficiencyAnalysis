@@ -1,11 +1,32 @@
 package edu.ithaca.dragon;
 
+import java.util.ArrayList;
+
 public class ArrayListCollection implements Collection {
+    
+    private ArrayList<Playlist> collection;
+    private int size;
+
+    public ArrayListCollection(int capacity){
+       this.collection = new ArrayList<>();
+       this.size = 0;
+    }
+
+    @Override
+    public void addPlaylist(Playlist playlist) {
+        collection.add(playlist);
+        this.size++;
+    }
 
     @Override
     public String playlistNamesAndDurations() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playlistNamesAndDurations'");
+
+        StringBuilder playlistNamesAndDurationString = new StringBuilder();
+        ArrayList<String> names = new ArrayList<>(size);
+        int duration = 0;
+        for (int i=0; i<size; i++){
+            for (int )
+        }
     }
 
     @Override

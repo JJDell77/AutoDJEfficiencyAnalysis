@@ -8,8 +8,10 @@ public class ArrayPlaylist implements Playlist {
 
     private ArrayList<Song> playlist;
     private int size;
+    private String name;
 
-    public ArrayPlaylist(int capacity){
+    public ArrayPlaylist(int capacity, String name){
+        this.name = name;
         this.playlist = new ArrayList<>();
         this.size = 0;
     }

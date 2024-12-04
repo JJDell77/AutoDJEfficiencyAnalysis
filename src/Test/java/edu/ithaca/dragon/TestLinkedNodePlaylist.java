@@ -19,7 +19,7 @@ public class TestLinkedNodePlaylist {
     
     public Playlist sampleSongs() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
-        Playlist myPlaylist = new LinkedNodePlaylist();
+        Playlist myPlaylist = new LinkedNodePlaylist("myPlaylist");
         for (int i=0; i<50; i++){
             myPlaylist.add(allSongs.get(i));
         }
@@ -116,7 +116,7 @@ public class TestLinkedNodePlaylist {
     @Test
 
     public void testPlayNext() throws IOException {
-        Playlist myPlaylist = new LinkedNodePlaylist();
+        Playlist myPlaylist = new LinkedNodePlaylist("myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -134,7 +134,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void testIsEmpty() throws IOException{
-        Playlist myPlaylist = new LinkedNodePlaylist();
+        Playlist myPlaylist = new LinkedNodePlaylist("myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -160,7 +160,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void TestAdd() throws IOException{
-        Playlist myPlaylist = new LinkedNodePlaylist();
+        Playlist myPlaylist = new LinkedNodePlaylist("myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -184,7 +184,7 @@ public class TestLinkedNodePlaylist {
      */
     @Test
     public void testRemove() throws IOException {
-        Playlist myPlaylist = new LinkedNodePlaylist();  
+        Playlist myPlaylist = new LinkedNodePlaylist("myPlaylist");  
         ArrayList<Song> testSongs = otherSongs();     
 
         myPlaylist.add(testSongs.get(0));

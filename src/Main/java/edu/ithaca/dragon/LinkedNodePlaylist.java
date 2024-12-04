@@ -9,9 +9,11 @@ import edu.ithaca.dragon.io.LinkedNode;
 public class LinkedNodePlaylist implements Playlist {
 
     private LinkedNode<Song> front;
+    private String name;
 
-    public LinkedNodePlaylist(){
+    public LinkedNodePlaylist(String name){
         this.front = null;
+        this.name = name;
     }
 
     @Override
