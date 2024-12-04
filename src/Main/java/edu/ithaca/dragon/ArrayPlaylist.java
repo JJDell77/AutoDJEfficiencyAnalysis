@@ -15,6 +15,9 @@ public class ArrayPlaylist implements Playlist {
         this.playlist = new ArrayList<>();
         this.size = 0;
     }
+    public String getName(){
+        return name;
+    }
     // QUINN
     @Override
     public String allSongs() {

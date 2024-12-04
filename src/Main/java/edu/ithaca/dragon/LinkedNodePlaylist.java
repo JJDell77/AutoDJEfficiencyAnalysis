@@ -16,6 +16,10 @@ public class LinkedNodePlaylist implements Playlist {
         this.name = name;
     }
 
+    public String getName(){
+        return name;
+    }
+    
     @Override
     public String allSongs() {
 

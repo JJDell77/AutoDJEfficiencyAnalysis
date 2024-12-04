@@ -2,6 +2,8 @@ package edu.ithaca.dragon;
 
 import java.util.ArrayList;
 
+import edu.ithaca.dragon.autodj.Song;
+
 public class ArrayListCollection implements Collection {
     
     private ArrayList<Playlist> collection;
@@ -22,11 +24,14 @@ public class ArrayListCollection implements Collection {
     public String playlistNamesAndDurations() {
 
         StringBuilder playlistNamesAndDurationString = new StringBuilder();
-        ArrayList<String> names = new ArrayList<>(size);
         int duration = 0;
         for (int i=0; i<size; i++){
-            for (int )
+            Playlist thisPlaylist = collection.get(i);
+            String currentPlaylistName = thisPlaylist.getName();
+            playlistNamesAndDurationString.append(currentPlaylistName).append("\n");
+            duration += thisPlaylist.duration();
         }
+        return playlistNamesAndDurationString.toString() + "Total Duration:" + " " + duration + " " + "Minutes.";
     }
 
     @Override

@@ -14,15 +14,15 @@ public class TestArrayListCollection {
 
     public Collection sampleCollection() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
-        Playlist playlist1 = new ArrayPlaylist(5);
+        Playlist playlist1 = new LinkedNodePlaylist("Playlist1");
         for (int i=0; i<5; i++){
             playlist1.add(allSongs.get(i));
         }
-        Playlist playlist2 = new ArrayPlaylist(5);
+        Playlist playlist2 = new LinkedNodePlaylist("Playlist2");
         for (int i=5; i<10; i++){
             playlist2.add(allSongs.get(i));
         }
-        Playlist playlist3 = new ArrayPlaylist(5);
+        Playlist playlist3 = new LinkedNodePlaylist("Playlist3");
         for (int i=10; i<15; i++){
             playlist3.add(allSongs.get(i));
         }
@@ -37,21 +37,10 @@ public class TestArrayListCollection {
     public void testPlaylistNamesAndDurations() throws IOException {
         Collection myCollection = sampleCollection();
 
-        assertEquals(myCollection.playlistNamesAndDurations(), "Resonate\n" +
-             "Traveling Man\n" +
-             "Plantation\n" +
-             "Who Paid Them Off?\n" +
-             "New Fashion\n" +
-             "The Gold (Dubmatix Runnin' Remix)\n" +
-             "Give Yourself Over\n" +
-             "Garden Tree\n" +
-             "High Grade\n" +
-             "Pure Fire (Disco Mix)\n" +
-             "Make You Happy\n" +
-             "Goodbye - Sim Redmond Band Remix\n" +
-             "8 Track Mind\n" +
-             "In the Dark\n" +
-             "Beautiful People\n");
+        assertEquals(myCollection.playlistNamesAndDurations(), "Playlist1\n"+
+        "Playlist2\n"+
+        "Playlist3\n"+
+        "Total Duration: 68 Minutes.");
     }
 
     @Test

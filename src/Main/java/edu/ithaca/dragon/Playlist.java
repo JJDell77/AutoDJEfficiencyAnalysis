@@ -8,6 +8,11 @@ import edu.ithaca.dragon.autodj.Song;
 public interface Playlist {
     
     /**
+     * @return return a string representing the name of the playlist
+     */
+    String getName();
+
+    /**
      * @return return a string representing all songs in the playlist
      */
     String allSongs();
