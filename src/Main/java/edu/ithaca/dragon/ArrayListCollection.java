@@ -28,10 +28,11 @@ public class ArrayListCollection implements Collection {
         for (int i=0; i<size; i++){
             Playlist thisPlaylist = collection.get(i);
             String currentPlaylistName = thisPlaylist.getName();
-            playlistNamesAndDurationString.append(currentPlaylistName).append("\n");
+            int currentPlaylistDuration = thisPlaylist.duration();
+            playlistNamesAndDurationString.append(currentPlaylistName + " " + "Duration:" + " " + currentPlaylistDuration + " " + "minutes").append("\n");
             duration += thisPlaylist.duration();
         }
-        return playlistNamesAndDurationString.toString() + "Total Duration:" + " " + duration + " " + "Minutes.";
+        return playlistNamesAndDurationString.toString() + "Total Duration:" + " " + duration + " " + "minutes.";
     }
 
     @Override

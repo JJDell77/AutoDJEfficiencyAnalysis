@@ -37,10 +37,10 @@ public class TestArrayListCollection {
     public void testPlaylistNamesAndDurations() throws IOException {
         Collection myCollection = sampleCollection();
 
-        assertEquals(myCollection.playlistNamesAndDurations(), "Playlist1\n"+
-        "Playlist2\n"+
-        "Playlist3\n"+
-        "Total Duration: 68 Minutes.");
+        assertEquals(myCollection.playlistNamesAndDurations(), "Playlist1 Duration: 24 minutes\n"+
+        "Playlist2 Duration: 24 minutes\n"+
+        "Playlist3 Duration: 20 minutes\n"+
+        "Total Duration: 68 minutes.");
     }
 
     @Test
