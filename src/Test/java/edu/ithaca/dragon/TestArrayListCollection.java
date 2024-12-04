@@ -44,9 +44,8 @@ public class TestArrayListCollection {
     }
 
     @Test
-    public void testPlaylistInfo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playlistInfo'");
+    public void testPlaylistInfo() throws IOException {
+        Collection myCollection = sampleCollection();
     }
 
     @Test

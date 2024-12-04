@@ -2,6 +2,8 @@ package edu.ithaca.dragon;
 
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import edu.ithaca.dragon.autodj.Song;
 
 public class ArrayListCollection implements Collection {
@@ -22,7 +24,9 @@ public class ArrayListCollection implements Collection {
 
     @Override
     public String playlistNamesAndDurations() {
-
+        if (size == 0){
+            throw new RuntimeErrorException(null, "Collection is Empty");
+        }
         StringBuilder playlistNamesAndDurationString = new StringBuilder();
         int duration = 0;
         for (int i=0; i<size; i++){
