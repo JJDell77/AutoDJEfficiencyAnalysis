@@ -98,8 +98,6 @@ public class LinkedNodePlaylist implements Playlist {
                 current.setNext(nextNode.getNext()); 
                 found = true;
             }
-
-            
             current = nextNode;
         }
         if (found == false){
