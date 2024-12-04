@@ -17,7 +17,7 @@ public interface Collection {
      * "This playlist has ## songs with a duration of ##. The most popular artist
      * in this playlist is ##"
      */
-    String playlistInfo();
+    String playlistInfo(String playlistName);
 
     /**
      * @post remove a playlist

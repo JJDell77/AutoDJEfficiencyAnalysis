@@ -1,6 +1,7 @@
 package edu.ithaca.dragon;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import javax.management.RuntimeErrorException;
 
@@ -25,7 +26,7 @@ public class ArrayListCollection implements Collection {
     @Override
     public String playlistNamesAndDurations() {
         if (size == 0){
-            throw new RuntimeErrorException(null, "Collection is Empty");
+            throw new NoSuchElementException("Collection is empty");
         }
         StringBuilder playlistNamesAndDurationString = new StringBuilder();
         int duration = 0;
@@ -40,7 +41,7 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public String playlistInfo() {
+    public String playlistInfo(String playlistName) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'playlistInfo'");
     }

@@ -1,9 +1,11 @@
 package edu.ithaca.dragon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
@@ -41,11 +43,21 @@ public class TestArrayListCollection {
         "Playlist2 Duration: 24 minutes\n"+
         "Playlist3 Duration: 20 minutes\n"+
         "Total Duration: 68 minutes.");
+        Collection newCollection = new ArrayListCollection(5);
+        assertThrows(NoSuchElementException.class, () -> newCollection.playlistNamesAndDurations(), "Collection is empty");  
     }
 
     @Test
     public void testPlaylistInfo() throws IOException {
         Collection myCollection = sampleCollection();
+        assertEquals("This playlist has 5 songs with a duration of 24 minutes. The most popular artist in this playlist is John Brown's Body"
+                                , myCollection.playlistInfo("Playlist1"));
+        assertEquals("This playlist has 5 songs with a duration of 24 minutes. The most popular artist in this playlist is John Brown's Body"
+                                , myCollection.playlistInfo("Playlist2"));
+        assertEquals("This playlist has 5 songs with a duration of 20 minutes. The most popular artist in this playlist is The Gunpoets"
+                                , myCollection.playlistInfo("Playlist3"));
+        assertThrows(NoSuchElementException.class, () -> myCollection.playlistInfo("NOT A NAME"), "Playlist not found");  
+
     }
 
     @Test
