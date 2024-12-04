@@ -1,5 +1,6 @@
 package edu.ithaca.dragon;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;
@@ -17,6 +18,9 @@ public class ArrayPlaylist implements Playlist {
     }
     public String getName(){
         return name;
+    }
+    public int getSize(){
+        return size;
     }
     // QUINN
     @Override
@@ -89,6 +93,27 @@ public class ArrayPlaylist implements Playlist {
     public boolean contains(Song song) {
         return playlist.contains(song);
     }
+
+    public String mostPopularArtist() {
+        HashMap<String, Integer> artistCount = new HashMap<>();
+        String mostPopularArtist = null;
+        int maxCount = 0;
+
+        for (Song song : playlist) {
+            String artist = song.getArtist();
+            artistCount.put(artist, artistCount.getOrDefault(artist, 0) + 1);
+
+            if (artistCount.get(artist) > maxCount) {
+                maxCount = artistCount.get(artist);
+                mostPopularArtist = artist;
+            }
+        }
+        if (mostPopularArtist == null){
+            throw new NoSuchElementException("No artist found");
+        }
+        return mostPopularArtist;
+    }
+
     
     
 }

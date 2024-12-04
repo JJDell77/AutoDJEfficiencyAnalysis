@@ -42,8 +42,29 @@ public class ArrayListCollection implements Collection {
 
     @Override
     public String playlistInfo(String playlistName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playlistInfo'");
+        if (size == 0){
+            throw new NoSuchElementException("Collection is empty");
+        }
+
+        
+        Playlist playlistToFind = null;
+        boolean found = false;
+        for (int i=0; i<size && found == false; i++){
+            Playlist playlist = collection.get(i);
+            if (playlist.getName() == playlistName){
+                playlistToFind = playlist;
+                found = true;
+            }
+        }
+        if (playlistToFind == null){
+            throw new NoSuchElementException("Playlist not found");
+        }
+        StringBuilder playlistInfo = new StringBuilder();
+        int numOfSongs = playlistToFind.getSize();
+        int playlistDuration = playlistToFind.duration();
+        String mostPlayedArtist = playlistToFind.mostPopularArtist();
+        playlistInfo.append("This playlist has " + numOfSongs + " songs with a duration of " + playlistDuration + " minutes. The most popular artist in this playlist is " + mostPlayedArtist);
+        return playlistInfo.toString();
     }
 
     @Override

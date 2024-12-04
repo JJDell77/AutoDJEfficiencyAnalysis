@@ -13,6 +13,11 @@ public interface Playlist {
     String getName();
 
     /**
+     * @return return an int representing the size of the playlist
+     */
+    int getSize();
+
+    /**
      * @return return a string representing all songs in the playlist
      */
     String allSongs();
@@ -51,6 +56,11 @@ public interface Playlist {
      * @return true if song is present in the playlist
      */
     boolean contains(Song song);
+
+    /**
+     * @return the name of the most popular artist in the playlist
+     */
+    String mostPopularArtist();
     
     
 }

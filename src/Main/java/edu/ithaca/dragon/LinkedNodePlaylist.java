@@ -1,6 +1,7 @@
 package edu.ithaca.dragon;
 
 
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;
@@ -10,14 +11,20 @@ public class LinkedNodePlaylist implements Playlist {
 
     private LinkedNode<Song> front;
     private String name;
+    private int size;
 
     public LinkedNodePlaylist(String name){
         this.front = null;
         this.name = name;
+        this.size = 0;
     }
 
     public String getName(){
         return name;
+    }
+
+    public int getSize(){
+        return size;
     }
     
     @Override
@@ -55,6 +62,7 @@ public class LinkedNodePlaylist implements Playlist {
             throw new NoSuchElementException("No Songs available");
         }
         front = front.getNext();
+        size--;
         return current.getItem();
     }
 
@@ -83,6 +91,7 @@ public class LinkedNodePlaylist implements Playlist {
             }
             current.setNext(new LinkedNode<Song>(song));
         }
+        size ++;
     }
 
     @Override
@@ -91,8 +100,9 @@ public class LinkedNodePlaylist implements Playlist {
             throw new IllegalArgumentException("Song not found in the playlist.");
         }
     
-        if (front.getItem() == song) {
+        if (front.getItem().equals(song)) {
             front = front.getNext();
+            size--;
             return;
         }
         
@@ -103,6 +113,7 @@ public class LinkedNodePlaylist implements Playlist {
             if (nextNode.getItem().equals(song) && found == false) {
                 current.setNext(nextNode.getNext()); 
                 found = true;
+                size--;
             }
             current = nextNode;
         }
@@ -123,6 +134,30 @@ public class LinkedNodePlaylist implements Playlist {
             current = current.getNext();
         }
         return false;
+    }
+
+    public String mostPopularArtist() {
+        if (front == null) {
+            throw new NoSuchElementException("No artist found");
+        }
+
+        HashMap<String, Integer> artistCount = new HashMap<>();
+        String mostPopularArtist = null;
+        int maxCount = 0;
+
+        LinkedNode<Song> current = front;
+        while (current != null) {
+            String artist = current.getItem().getArtist();
+            artistCount.put(artist, artistCount.getOrDefault(artist, 0) + 1);
+
+            if (artistCount.get(artist) > maxCount) {
+                maxCount = artistCount.get(artist);
+                mostPopularArtist = artist;
+            }
+            current = current.getNext();
+        }
+
+        return mostPopularArtist;
     }
     
 }
