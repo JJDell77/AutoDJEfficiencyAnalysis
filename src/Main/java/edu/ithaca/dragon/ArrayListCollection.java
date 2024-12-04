@@ -17,6 +17,10 @@ public class ArrayListCollection implements Collection {
        this.size = 0;
     }
 
+    public int getSize(){
+        return size;
+    }
+
     @Override
     public void addPlaylist(Playlist playlist) {
         collection.add(playlist);
@@ -51,7 +55,7 @@ public class ArrayListCollection implements Collection {
         boolean found = false;
         for (int i=0; i<size && found == false; i++){
             Playlist playlist = collection.get(i);
-            if (playlist.getName() == playlistName){
+            if (playlist.getName().equals(playlistName)){
                 playlistToFind = playlist;
                 found = true;
             }
@@ -68,9 +72,24 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public void removePlaylist() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removePlaylist'");
+    public void removePlaylist(String playlistName) {
+        if (size == 0){
+            throw new NoSuchElementException("Collection is empty");
+        }
+        boolean removed = false;
+        for (int i = 0; i < collection.size(); i++) {
+            Playlist playlist = collection.get(i);
+            if (playlist.getName().equals(playlistName)) {
+                collection.remove(i);
+                removed = true;
+                break;
+            }
+        }
+        if (!removed) {
+            throw new NoSuchElementException("Playlist not found");
+        }
+        size--;
+
     }
 
     @Override

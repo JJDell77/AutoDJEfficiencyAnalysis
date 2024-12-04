@@ -63,9 +63,16 @@ public class TestArrayListCollection {
     }
 
     @Test
-    public void testRemovePlaylist() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removePlaylist'");
+    public void testRemovePlaylist() throws IOException {
+        Collection myCollection = sampleCollection();
+        assertThrows(NoSuchElementException.class, () -> myCollection.removePlaylist("mY jAmS"), "Playlist not found");  
+        myCollection.removePlaylist("Playlist1");
+        assertEquals(2, myCollection.getSize());
+        myCollection.removePlaylist("Playlist2");
+        assertEquals(1, myCollection.getSize());
+        myCollection.removePlaylist("Playlist3");
+        assertEquals(0, myCollection.getSize());
+        assertThrows(NoSuchElementException.class, () -> myCollection.removePlaylist("mY jAmS"), "Collection is empty");  
     }
 
     @Test

@@ -22,7 +22,7 @@ public interface Collection {
     /**
      * @post remove a playlist
      */
-    void removePlaylist();
+    void removePlaylist(String playlistName);
 
     /**
      * @post add a new empty playlist
@@ -42,6 +42,11 @@ public interface Collection {
      * @post Remove a song from all playlists
      */
     void removeAllInstances();
+
+    /**
+     * @return size of collection
+     */
+    int getSize();
 
     
 }
