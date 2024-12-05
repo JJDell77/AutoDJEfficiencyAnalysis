@@ -117,9 +117,6 @@ public class LinkedNodePlaylist implements Playlist {
             }
             current = nextNode;
         }
-        if (found == false){
-            throw new IllegalArgumentException("Song not found in the playlist.");
-        }
     }
     
 

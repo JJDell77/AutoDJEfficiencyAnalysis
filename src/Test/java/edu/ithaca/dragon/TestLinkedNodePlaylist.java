@@ -199,9 +199,6 @@ public class TestLinkedNodePlaylist {
 
         assertTrue(myPlaylist.contains(testSongs.get(0)));
         assertTrue(myPlaylist.contains(testSongs.get(2)));
-
-        // Try to remove a song that does not exist and assert that it throws an exception
-        assertThrows(IllegalArgumentException.class, () -> myPlaylist.remove(testSongs.get(4)), "Song not found in the playlist.");
     }
 
     
