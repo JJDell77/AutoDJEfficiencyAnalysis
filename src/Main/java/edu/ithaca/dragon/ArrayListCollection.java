@@ -6,10 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import javax.management.RuntimeErrorException;
-import java.util.Random;
-import java.util.Set;
-
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 

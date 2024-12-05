@@ -1,6 +1,5 @@
 package edu.ithaca.dragon;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;

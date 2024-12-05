@@ -11,8 +11,6 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
-import edu.ithaca.dragon.ArrayPlaylist;
-import edu.ithaca.dragon.Playlist;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
