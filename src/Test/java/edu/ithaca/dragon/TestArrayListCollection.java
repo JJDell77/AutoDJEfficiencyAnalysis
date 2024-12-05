@@ -108,7 +108,19 @@ public class TestArrayListCollection {
 
     @Test
     public void testRemoveAllInstances() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeAllInstances'");
+        Collection myCollection = sampleCollection();
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+
+        Song songToRemove = allSongs.get(0);
+
+        myCollection.getPlaylist("Playlist1").add(songToRemove);
+        myCollection.getPlaylist("Playlist2").add(songToRemove);
+        assertTrue(myCollection.getPlaylist("Playlist1").allSongs().contains(songToRemove.getTitle()));
+        assertTrue(myCollection.getPlaylist("Playlist2").allSongs().contains(songToRemove.getTitle()));
+
+        myCollection.removeAllInstances(songToRemove.getTitle());
+        assertFalse(myCollection.getPlaylist("Playlist1").allSongs().contains(songToRemove.getTitle()));
+        assertFalse(myCollection.getPlaylist("Playlist2").allSongs().contains(songToRemove.getTitle()));
+        assertFalse(myCollection.getPlaylist("Playlist3").allSongs().contains(songToRemove.getTitle()));
     }
 }

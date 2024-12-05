@@ -49,7 +49,7 @@ public interface Collection {
     /**
      * @post Remove a song from all playlists
      */
-    void removeAllInstances();
+    void removeAllInstances(String title);
 
     /**
      * @return size of collection

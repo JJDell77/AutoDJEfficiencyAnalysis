@@ -140,7 +140,7 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public void removeAllInstances() {
+    public void removeAllInstances(String title) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'removeAllInstances'");
     }
