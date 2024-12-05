@@ -140,9 +140,9 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public void removeAllInstances(String title) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeAllInstances'");
+    public void removeAllInstances(Song song) {
+        for (Playlist playlist : collection) {
+            playlist.remove(song);
+        }
     }
-    
 }

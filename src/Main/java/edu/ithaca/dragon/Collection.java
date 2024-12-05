@@ -2,6 +2,8 @@ package edu.ithaca.dragon;
 
 import java.io.IOException;
 
+import edu.ithaca.dragon.autodj.Song;
+
 public interface Collection {
 
     /**
@@ -49,7 +51,7 @@ public interface Collection {
     /**
      * @post Remove a song from all playlists
      */
-    void removeAllInstances(String title);
+    void removeAllInstances(Song song);
 
     /**
      * @return size of collection

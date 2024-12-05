@@ -97,7 +97,7 @@ public class LinkedNodePlaylist implements Playlist {
     @Override
     public void remove(Song song) {
         if (front == null) {
-            throw new IllegalArgumentException("Song not found in the playlist.");
+            throw new IllegalArgumentException("Playlist is empty");
         }
     
         if (front.getItem().equals(song)) {

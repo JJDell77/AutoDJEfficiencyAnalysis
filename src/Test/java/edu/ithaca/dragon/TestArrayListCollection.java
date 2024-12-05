@@ -107,7 +107,7 @@ public class TestArrayListCollection {
     }
 
     @Test
-    public void testRemoveAllInstances() {
+    public void testRemoveAllInstances() throws IOException {
         Collection myCollection = sampleCollection();
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
 
@@ -118,9 +118,9 @@ public class TestArrayListCollection {
         assertTrue(myCollection.getPlaylist("Playlist1").allSongs().contains(songToRemove.getTitle()));
         assertTrue(myCollection.getPlaylist("Playlist2").allSongs().contains(songToRemove.getTitle()));
 
-        myCollection.removeAllInstances(songToRemove.getTitle());
-        assertFalse(myCollection.getPlaylist("Playlist1").allSongs().contains(songToRemove.getTitle()));
-        assertFalse(myCollection.getPlaylist("Playlist2").allSongs().contains(songToRemove.getTitle()));
-        assertFalse(myCollection.getPlaylist("Playlist3").allSongs().contains(songToRemove.getTitle()));
+        myCollection.removeAllInstances(songToRemove);
+        assertFalse(myCollection.getPlaylist("Playlist1").contains(songToRemove));
+        assertFalse(myCollection.getPlaylist("Playlist2").contains(songToRemove));
+        assertFalse(myCollection.getPlaylist("Playlist3").contains(songToRemove));
     }
 }
