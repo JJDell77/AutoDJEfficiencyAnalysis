@@ -1,7 +1,9 @@
 package edu.ithaca.dragon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,6 +35,18 @@ public class TestArrayListCollection {
         myCollection.addPlaylist(playlist2);
         myCollection.addPlaylist(playlist3);
         return myCollection;
+    }
+
+    @Test
+    public void testGetPlaylist() throws IOException{
+        Collection myCollection = sampleCollection();
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+        Playlist playlist1 = new LinkedNodePlaylist("Playlist1");
+        for (int i=0; i<5; i++){
+            playlist1.add(allSongs.get(i));
+        }
+        assertEquals(playlist1.allSongs(), myCollection.getPlaylist("Playlist1").allSongs());
+
     }
     
     @Test
@@ -76,15 +90,20 @@ public class TestArrayListCollection {
     }
 
     @Test
-    public void testAddEmptyPlaylist() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addEmptyPlaylist'");
+    public void testAddEmptyPlaylist() throws IOException {
+        Collection myCollection = sampleCollection();
+        Playlist emptyPlaylist = new LinkedNodePlaylist("Empty Playlist");
+        myCollection.addPlaylist(emptyPlaylist);
+        assertEquals(4, myCollection.getSize());
     }
 
     @Test
-    public void testNewRandomPlaylist() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newRandomPlaylist'");
+    public void testNewRandomPlaylist() throws IOException {
+        Collection myCollection = sampleCollection();
+        myCollection.newRandomPlaylist(20);
+        assertEquals(4, myCollection.getSize());
+        assertFalse(myCollection.getPlaylist("Random Playlist").isEmpty());
+        assertTrue(myCollection.getPlaylist("Random Playlist").duration() < 20);
     }
 
     @Test

@@ -27,6 +27,16 @@ public class ArrayListCollection implements Collection {
         this.size++;
     }
 
+    public Playlist getPlaylist(String name){
+        for (int i = 0; i < collection.size(); i++) {
+            Playlist playlist = collection.get(i);
+            if (playlist.getName().equals(name)) {
+                return playlist;
+            }
+        }
+        throw new NoSuchElementException("Playlist Not Found.");
+    }
+
     @Override
     public String playlistNamesAndDurations() {
         if (size == 0){
@@ -94,12 +104,12 @@ public class ArrayListCollection implements Collection {
 
     @Override
     public void addEmptyPlaylist() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addEmptyPlaylist'");
+        Playlist emptyPlaylist = new LinkedNodePlaylist("Empty Playlist");
+        collection.add(emptyPlaylist);
     }
 
     @Override
-    public void newRandomPlaylist() {
+    public void newRandomPlaylist(int duration) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'newRandomPlaylist'");
     }

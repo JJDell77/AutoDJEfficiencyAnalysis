@@ -6,6 +6,11 @@ public interface Collection {
      * @post adds a playlist of songs to the collection
      */
     void addPlaylist(Playlist playlist);
+
+    /**
+     * @return playlist given its name
+     */
+    Playlist getPlaylist(String name);
     
     /**
      * @return a string representing all playlist names and their durations
@@ -36,7 +41,7 @@ public interface Collection {
      * chosen for another playlist, they should not play in the same order each time).  The playlist should 
      * have as many songs as can fit without going over the given duration.
      */
-    void newRandomPlaylist();
+    void newRandomPlaylist(int duration);
 
     /**
      * @post Remove a song from all playlists
