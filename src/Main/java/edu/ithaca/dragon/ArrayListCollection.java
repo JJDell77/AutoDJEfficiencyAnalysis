@@ -1,11 +1,17 @@
 package edu.ithaca.dragon;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.management.RuntimeErrorException;
+import java.util.Random;
+import java.util.Set;
 
 import edu.ithaca.dragon.autodj.Song;
+import edu.ithaca.dragon.autodj.data.SongDataIO;
 
 public class ArrayListCollection implements Collection {
     
@@ -109,9 +115,28 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public void newRandomPlaylist(int duration) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newRandomPlaylist'");
+    public void newRandomPlaylist(int duration, String name) throws IOException {
+        Playlist randomPlaylist = new LinkedNodePlaylist(name);
+        int totalDuration = 0;
+
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+        Collections.shuffle(allSongs);
+
+        for (Song randomSong : allSongs) {
+            if (totalDuration + randomSong.getDuration() <= duration) {
+                randomPlaylist.add(randomSong);
+                totalDuration += randomSong.getDuration();
+            }
+            if (totalDuration + randomSong.getDuration() >= duration) {
+                break;
+            }
+        }
+
+        if (randomPlaylist.getSize() == 0) {
+            throw new IllegalArgumentException("Cannot create a random playlist with the given duration");
+        }
+
+        addPlaylist(randomPlaylist);
     }
 
     @Override

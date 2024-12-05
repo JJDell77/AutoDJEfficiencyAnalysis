@@ -1,5 +1,7 @@
 package edu.ithaca.dragon;
 
+import java.io.IOException;
+
 public interface Collection {
 
     /**
@@ -35,13 +37,14 @@ public interface Collection {
     void addEmptyPlaylist();
 
     /**
+     * @throws IOException 
      * @post create a new random playlist of a specified duration
      * Make a new playlist with the given name, and populate it with a random group of songs that do not 
      * repeat (within this playlist) and are in some shuffled order (i.e., if the same random songs were 
      * chosen for another playlist, they should not play in the same order each time).  The playlist should 
      * have as many songs as can fit without going over the given duration.
      */
-    void newRandomPlaylist(int duration);
+    void newRandomPlaylist(int duration, String name) throws IOException;
 
     /**
      * @post Remove a song from all playlists

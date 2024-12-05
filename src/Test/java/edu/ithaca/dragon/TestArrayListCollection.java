@@ -100,10 +100,10 @@ public class TestArrayListCollection {
     @Test
     public void testNewRandomPlaylist() throws IOException {
         Collection myCollection = sampleCollection();
-        myCollection.newRandomPlaylist(20);
+        myCollection.newRandomPlaylist(2000000, "Random Playlist");
+        assertTrue(myCollection.getPlaylist("Random Playlist").duration() <= 2000000);
         assertEquals(4, myCollection.getSize());
         assertFalse(myCollection.getPlaylist("Random Playlist").isEmpty());
-        assertTrue(myCollection.getPlaylist("Random Playlist").duration() < 20);
     }
 
     @Test
