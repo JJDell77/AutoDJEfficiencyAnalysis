@@ -62,6 +62,7 @@ public class HashMapCollection implements Collection {
            System.out.println("Empty playlist '" + playlistName + "' has been added.");
        }
    }
+   
    @Override
    public void newRandomPlaylist(int duration, String name) throws IOException {
     if (playlists.containsKey(name)) {
