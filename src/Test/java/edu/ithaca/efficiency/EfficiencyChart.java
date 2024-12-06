@@ -15,7 +15,7 @@ public class EfficiencyChart extends ApplicationFrame {
    public EfficiencyChart(DefaultCategoryDataset dataset, String title ) {
       super(title);
       JFreeChart lineChart = ChartFactory.createLineChart(
-         "Efficiency Chart",
+         title,
          "Amount of Data","Time",
          dataset,
          PlotOrientation.VERTICAL,
