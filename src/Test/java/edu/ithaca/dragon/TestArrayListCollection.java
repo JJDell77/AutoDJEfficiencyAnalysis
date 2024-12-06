@@ -92,8 +92,7 @@ public class TestArrayListCollection {
     @Test
     public void testAddEmptyPlaylist() throws IOException {
         Collection myCollection = sampleCollection();
-        Playlist emptyPlaylist = new LinkedNodePlaylist("Empty Playlist");
-        myCollection.addPlaylist(emptyPlaylist);
+        myCollection.addEmptyPlaylist("Empty Playlist");
         assertEquals(4, myCollection.getSize());
     }
 

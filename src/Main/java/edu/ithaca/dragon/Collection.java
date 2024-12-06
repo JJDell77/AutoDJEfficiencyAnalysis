@@ -36,7 +36,7 @@ public interface Collection {
     /**
      * @post add a new empty playlist
      */
-    void addEmptyPlaylist();
+    void addEmptyPlaylist(String name);
 
     /**
      * @throws IOException 
