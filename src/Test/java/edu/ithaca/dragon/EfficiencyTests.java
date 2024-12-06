@@ -1,147 +1,74 @@
 package edu.ithaca.dragon;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
+
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import edu.ithaca.dragon.LeftEndListQueue;
-import edu.ithaca.dragon.datastructures.stack.LeftTopListStack;
-import edu.ithaca.dragon.datastructures.stack.RightTopListStack;
-import edu.ithaca.dragon.datastructures.queue.Queue;
-import edu.ithaca.dragon.datastructures.stack.Stack;
+import edu.ithaca.dragon.ArrayPlaylist;
+import edu.ithaca.dragon.LinkedNodePlaylist;
+import edu.ithaca.dragon.autodj.Song;
+import edu.ithaca.dragon.autodj.data.SongDataIO;
 import edu.ithaca.efficiency.EfficiencyChart;
-import edu.ithaca.dragon.datastructures.queue.RightEndListQueue;
 
 public class EfficiencyTests {
+//Max amount of songs is 100000
+    public static Playlist sampleArrayPlaylist(int amountOfData) throws IOException{
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+        Playlist arrayPlaylist = new ArrayPlaylist(50, "APlaylist");
+        for (int i=0; i<amountOfData; i++){
+            arrayPlaylist.add(allSongs.get(i));
+        }
+        return arrayPlaylist;
+    }
 
-    public static long timeAPut(GrabBag<String> grabBag){ //tests time it takes to add something to a grab bag
+    public static Playlist sampleLinkedNodePlaylist(int amountOfData) throws IOException{
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+
+        Playlist linkedNodePlaylist = new LinkedNodePlaylist("LNPlaylist");
+        for (int i=0; i<amountOfData; i++){
+            linkedNodePlaylist.add(allSongs.get(i));
+        }
+        return linkedNodePlaylist;
+    }
+
+    public static long timeArrayPlaylistAllSongs() throws IOException{ //tests time it takes to get all songs
+        Playlist playlist = sampleArrayPlaylist(10000);
         long start = System.nanoTime();
-        grabBag.putSomethingIn("an example string");
+        playlist.allSongs();
         long end = System.nanoTime();
         long runTime = (end - start);
         return runTime;
     }
 
-    public static long timeATake(GrabBag<String> grabBag){ //tests time it takes to take something out of a grab bag
+    public static long timeLNPlaylistAllSongs() throws IOException{ //tests time it takes to get all songs
+        Playlist playlist = sampleLinkedNodePlaylist(10000);
         long start = System.nanoTime();
-        grabBag.takeSomethingOut();
+        playlist.allSongs();
         long end = System.nanoTime();
         long runTime = (end - start);
         return runTime;
     }
 
-    public static long timeAPush(Stack<String> stack){ //tests time it takes to add something to a grab bag
+    public static long timeArrayPlaylistDuration() throws IOException{ //tests time it takes to get duration of the playlist
+        Playlist playlist = sampleArrayPlaylist(10000);
         long start = System.nanoTime();
-        stack.push("an example string");
+        playlist.duration();
         long end = System.nanoTime();
         long runTime = (end - start);
         return runTime;
     }
 
-    public static long timeAPop(Stack<String> stack){ //tests time it takes to pop something from a grab bag
+    public static long timeLNPlaylistDuration() throws IOException{ //tests time it takes to get duration of the playlist
+        Playlist playlist = sampleLinkedNodePlaylist(10000);
         long start = System.nanoTime();
-        stack.pop();
+        playlist.duration();
         long end = System.nanoTime();
         long runTime = (end - start);
         return runTime;
-    }
-
-    public static long timeEnqueue(Queue<String> queue){ //tests time it takes to add something to a Queue
-        long start = System.nanoTime();
-        queue.enqueue("an example string");
-        long end = System.nanoTime();
-        long runTime = (end - start);
-        return runTime;
-    }
-
-    public static long timeDequeue(Queue<String> queue){ //tests time it takes to dequeue something from a Queue
-        long start = System.nanoTime();
-        queue.dequeue();
-        long end = System.nanoTime();
-        long runTime = (end - start);
-        return runTime;
-    }
-
-    public static long averageTimeForAPut(GrabBag<String> grabBag, int numPutsToAverage){ //tests average time it takes to put a lot of stuff into a grab bag
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeAPut(grabBag);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static long averageTimeForATake(GrabBag<String> grabBag, int numPutsToAverage){ //tests average time it takes to take a lot of stuff out of a grab bag
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeATake(grabBag);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static long averageTimeForAPush(Stack<String> stack, int numPutsToAverage){ //tests average time it takes to put a lot of stuff into a grab bag
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeAPush(stack);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static long averageTimeForAPop(Stack<String> stack, int numPutsToAverage){ //tests average time it takes to pop a lot of stuff out of a grab bag
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeAPop(stack);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static long averageTimeForEnqueue(Queue<String> queue, int numPutsToAverage){ //tests average time it takes to put a lot of stuff into a Queue
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeEnqueue(queue);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static long averageTimeForDequeue(Queue<String> queue, int numPutsToAverage){ //tests average time it takes to dequeue a lot of stuff out of a Queue
-        long total = 0;
-        for (int i=0; i<numPutsToAverage; i++){
-            total += timeDequeue(queue);
-        }
-        return total/numPutsToAverage;
-    }
-
-    public static void putManyItems(int putCount, GrabBag<String> grabBag) { //puts a bunch of stuff in a grab bag
-        for (int i=0; i<putCount; i++){
-            grabBag.putSomethingIn("an example string");
-        }
-    }
-
-    public static void takeManyItems(int takeCount, GrabBag<String> grabBag) { 
-        for (int i=0; i<takeCount; i++){
-            grabBag.takeSomethingOut();
-        }
-    }
-
-    public static void pushManyItems(int putCount, Stack<String> stack) { //puts a bunch of stuff in a grab bag
-        for (int i=0; i<putCount; i++){
-            stack.push("an example string");
-        }
-    }
-
-    public static void popManyItems(int popCount, Stack<String> stack) { 
-        for (int i=0; i<popCount; i++){
-            stack.pop();
-        }
-    }
-
-    public static void queueManyItems(int putCount, Queue<String> queue) { //puts a bunch of stuff in a grab bag
-        for (int i=0; i<putCount; i++){
-            queue.enqueue("an example string");
-        }
-    }
-
-    public static void dequeueManyItems(int dequeueCount, Queue<String> queue) { //puts a bunch of stuff in a grab bag
-        for (int i=0; i<dequeueCount; i++){
-            queue.dequeue();
-        }
     }
 
     public static DefaultCategoryDataset collectGrabBagPutData(GrabBag<String> testBag, String typeOfGrabBag){ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
