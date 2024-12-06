@@ -1,7 +1,4 @@
 package edu.ithaca.dragon;
-import edu.ithaca.dragon.*;
-import edu.ithaca.dragon.ArrayPlaylist;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -107,6 +104,40 @@ public class HashMapCollection implements Collection {
                System.out.println("Removed '" + song.getTitle() + "' from playlist.");
            }
        }
+   }
+
+   @Override
+   public int getSize() {
+       return playlists.size();
+   }
+   
+   @Override
+   public void addPlaylist(Playlist playlist) {
+       if (playlist == null) {
+           throw new IllegalArgumentException("Playlist cannot be null");
+       }
+       String playlistName = playlist.getName(); 
+       if (playlists.containsKey(playlistName)) {
+           throw new IllegalArgumentException("A playlist with the name '" + playlistName + "' already exists.");
+       }
+       playlists.put(playlistName, playlist); 
+   }
+   
+   @Override
+   public Playlist getPlaylist(String name) {
+       if (!playlists.containsKey(name)) {
+           throw new IllegalArgumentException("Playlist '" + name + "' not found.");
+       }
+       return playlists.get(name); 
+   }
+   
+   @Override
+   public String playlistInfo(String playlistName) {
+       if (!playlists.containsKey(playlistName)) {
+           return "Playlist '" + playlistName + "' not found.";
+       }
+       Playlist playlist = playlists.get(playlistName);
+       return "Playlist '" + playlistName + "' has " + playlist.getSize() + " songs with a total duration of " + playlist.duration() + " mins."; // Assuming the Playlist class has getSize() and duration() methods
    }
 }
 
