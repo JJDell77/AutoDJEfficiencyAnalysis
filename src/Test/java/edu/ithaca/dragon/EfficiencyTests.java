@@ -1,17 +1,9 @@
 package edu.ithaca.dragon;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-
 import javax.management.RuntimeErrorException;
-
 import org.jfree.data.category.DefaultCategoryDataset;
-
-import edu.ithaca.dragon.ArrayPlaylist;
-import edu.ithaca.dragon.LinkedNodePlaylist;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 import edu.ithaca.efficiency.EfficiencyChart;
@@ -75,7 +67,7 @@ public class EfficiencyTests {
         return total/numToAverage;
     }
 
-    public static long timeRemoveSong(Playlist playlist, int numToAverage) throws IOException{ //tests time it takes to get add songs
+    public static long timeRemoveSong(Playlist playlist, int numToAverage) throws IOException{ //tests time it takes to remove a song
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         playlist.add(allSongs.get(0));
         Song songToRemove = allSongs.get(0);
@@ -91,7 +83,7 @@ public class EfficiencyTests {
         return total/numToAverage;
     }
 
-    public static long timePlayNext(Playlist playlist, int numToAverage) throws IOException{ //tests time it takes to get add songs
+    public static long timePlayNext(Playlist playlist, int numToAverage) throws IOException{ //tests time it takes to play the next song
         long total = 0;
         for (int i=0; i<numToAverage; i++){
             long start = System.nanoTime();
@@ -104,7 +96,7 @@ public class EfficiencyTests {
     }
 
 
-    public static DefaultCategoryDataset collectAllSongsData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+    public static DefaultCategoryDataset collectAllSongsData(String playlistType) throws IOException{ //recieves a type of playlist, tests its effieciency when printing all songs for a large amount of data and prints the times
         
         final int numSongsToAddFirst = 1000;
         final int numDataPointsToPrint = 50;
@@ -128,7 +120,7 @@ public class EfficiencyTests {
         return dataset;
     }
 
-    public static DefaultCategoryDataset collectDurationData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+    public static DefaultCategoryDataset collectDurationData(String playlistType) throws IOException{ //recieves a type of playlist, tests its effieciency when calculating the duration of the playlist for a large amount of data and prints the times
         
         final int numSongsToAddFirst = 1000;
         final int numDataPointsToPrint = 50;
@@ -152,7 +144,7 @@ public class EfficiencyTests {
         return dataset;
     }
 
-    public static DefaultCategoryDataset collectAddSongData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+    public static DefaultCategoryDataset collectAddSongData(String playlistType) throws IOException{ //recieves a type of playlist, tests its effieciency when adding a song for a large amount of data and prints the times
         
         final int numSongsToAddFirst = 1000;
         final int numDataPointsToPrint = 50;
@@ -176,7 +168,7 @@ public class EfficiencyTests {
         return dataset;
     }
 
-    public static DefaultCategoryDataset collectRemoveSongData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+    public static DefaultCategoryDataset collectRemoveSongData(String playlistType) throws IOException{ //recieves a type of playlist, tests its effieciency when removing a song for a large amount of data and prints the times
         
         final int numSongsToAddFirst = 1000;
         final int numDataPointsToPrint = 50;
@@ -200,7 +192,7 @@ public class EfficiencyTests {
         return dataset;
     }
 
-    public static DefaultCategoryDataset collectPlayNextData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+    public static DefaultCategoryDataset collectPlayNextData(String playlistType) throws IOException{ //recieves a type of playlist, tests its effieciency when playing the next song for a large amount of data and prints the times
         
         final int numSongsToAddFirst = 1000;
         final int numDataPointsToPrint = 50;
@@ -225,7 +217,7 @@ public class EfficiencyTests {
     }
 
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException{ //Creates efficiency charts for each method in the playlist interface for both implementations of the interface
         new EfficiencyChart(collectAllSongsData("ArrayPlaylist"));
         new EfficiencyChart(collectAllSongsData("LinkedNodePlaylist"));
         new EfficiencyChart(collectDurationData("ArrayPlaylist"));
