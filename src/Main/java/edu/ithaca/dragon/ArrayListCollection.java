@@ -9,6 +9,8 @@ import java.util.NoSuchElementException;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
+//Author: JJ Purpose: Implementation of the collection interface using an Array List to store playlists
+
 public class ArrayListCollection implements Collection {
     
     private ArrayList<Playlist> collection;

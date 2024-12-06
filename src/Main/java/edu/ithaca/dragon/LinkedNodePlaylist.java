@@ -7,6 +7,8 @@ import java.util.NoSuchElementException;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.io.LinkedNode;
 
+//Author: JJ Purpose: Implementation of Playlist using Linked Nodes to store songs in a playist
+
 public class LinkedNodePlaylist implements Playlist {
 
     private LinkedNode<Song> front;
