@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
+//Author: JJ Purpose: Test ArrayListCollection to ensure all methods are working correctly
+
 public class TestArrayListCollection {
 
     public Collection sampleCollection() throws IOException{
