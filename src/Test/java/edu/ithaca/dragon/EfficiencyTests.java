@@ -91,6 +91,18 @@ public class EfficiencyTests {
         return total/numToAverage;
     }
 
+    public static long timePlayNext(Playlist playlist, int numToAverage) throws IOException{ //tests time it takes to get add songs
+        long total = 0;
+        for (int i=0; i<numToAverage; i++){
+            long start = System.nanoTime();
+            playlist.playNext();
+            long end = System.nanoTime();
+            long runTime = (end - start);
+            total+= runTime;
+        }
+        return total/numToAverage;
+    }
+
 
     public static DefaultCategoryDataset collectAllSongsData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
         
@@ -100,7 +112,7 @@ public class EfficiencyTests {
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
         System.out.println("Testing " + playlistType);
-        for(int i=0; i<numDataPointsToPrint; i++){
+        for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
                 playlist = sampleArrayPlaylist(numSongsToAdd);
@@ -124,7 +136,7 @@ public class EfficiencyTests {
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
         System.out.println("Testing " + playlistType);
-        for(int i=0; i<numDataPointsToPrint; i++){
+        for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
                 playlist = sampleArrayPlaylist(numSongsToAdd);
@@ -148,7 +160,7 @@ public class EfficiencyTests {
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
         System.out.println("Testing " + playlistType);
-        for(int i=0; i<numDataPointsToPrint; i++){
+        for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
                 playlist = sampleArrayPlaylist(numSongsToAdd);
@@ -172,7 +184,7 @@ public class EfficiencyTests {
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
         System.out.println("Testing " + playlistType);
-        for(int i=0; i<numDataPointsToPrint; i++){
+        for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
                 playlist = sampleArrayPlaylist(numSongsToAdd);
@@ -188,20 +200,42 @@ public class EfficiencyTests {
         return dataset;
     }
 
+    public static DefaultCategoryDataset collectPlayNextData(String playlistType) throws IOException{ //recieves a type of grab bag, tests its effieciency for a large amount of data and prints the times
+        
+        final int numSongsToAddFirst = 1000;
+        final int numDataPointsToPrint = 50;
+        final int numToAverageOver = 500;
+        Playlist playlist = null;
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
+        System.out.println("Testing " + playlistType);
+        for(int i=1; i<numDataPointsToPrint; i++){
+            int numSongsToAdd = numSongsToAddFirst * i;
+            if (playlistType == "ArrayPlaylist"){
+                playlist = sampleArrayPlaylist(numSongsToAdd);
+            }
+            else if (playlistType == "LinkedNodePlaylist"){
+                playlist = sampleLinkedNodePlaylist(numSongsToAdd);
+            }
+            else{throw new RuntimeErrorException(null, "Playlist Type Invalid");}
+            double avgTime = timePlayNext(playlist, numToAverageOver);
+            System.out.println((i+1)*numSongsToAdd + " \t\t " + avgTime);
+            dataset.addValue( avgTime, playlistType, Integer.toString(i+1));
+        }
+        return dataset;
+    }
+
 
     public static void main(String[] args) throws IOException{
-        /* 
         new EfficiencyChart(collectAllSongsData("ArrayPlaylist"));
         new EfficiencyChart(collectAllSongsData("LinkedNodePlaylist"));
         new EfficiencyChart(collectDurationData("ArrayPlaylist"));
         new EfficiencyChart(collectDurationData("LinkedNodePlaylist"));
         new EfficiencyChart(collectAddSongData("ArrayPlaylist"));
         new EfficiencyChart(collectAddSongData("LinkedNodePlaylist"));
-*/
         new EfficiencyChart(collectRemoveSongData("ArrayPlaylist"));
         new EfficiencyChart(collectRemoveSongData("LinkedNodePlaylist"));
-       
-
+        new EfficiencyChart(collectPlayNextData("ArrayPlaylist"));
+        new EfficiencyChart(collectPlayNextData("LinkedNodePlaylist"));
     }
     
 }
