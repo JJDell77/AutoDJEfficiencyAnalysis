@@ -103,7 +103,8 @@ public class EfficiencyTests {
         final int numToAverageOver = 500;
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-        System.out.println("Testing " + playlistType);
+        System.out.println("----------------------------");
+        System.out.println("Testing All Song Efficiency for " + playlistType);
         for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
@@ -127,7 +128,8 @@ public class EfficiencyTests {
         final int numToAverageOver = 500;
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-        System.out.println("Testing " + playlistType);
+        System.out.println("----------------------------");
+        System.out.println("Testing Duration Efficiency for " + playlistType);
         for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
@@ -151,7 +153,8 @@ public class EfficiencyTests {
         final int numToAverageOver = 500;
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-        System.out.println("Testing " + playlistType);
+        System.out.println("----------------------------");
+        System.out.println("Testing Add Song Efficiency for " + playlistType);
         for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
@@ -175,7 +178,8 @@ public class EfficiencyTests {
         final int numToAverageOver = 500;
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-        System.out.println("Testing " + playlistType);
+        System.out.println("----------------------------");
+        System.out.println("Testing Remove Song Efficiency for " + playlistType);
         for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
@@ -199,7 +203,8 @@ public class EfficiencyTests {
         final int numToAverageOver = 500;
         Playlist playlist = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-        System.out.println("Testing " + playlistType);
+        System.out.println("----------------------------");
+        System.out.println("Testing Play Next Efficiency for " + playlistType);
         for(int i=1; i<numDataPointsToPrint; i++){
             int numSongsToAdd = numSongsToAddFirst * i;
             if (playlistType == "ArrayPlaylist"){
@@ -218,16 +223,16 @@ public class EfficiencyTests {
 
 
     public static void main(String[] args) throws IOException{ //Creates efficiency charts for each method in the playlist interface for both implementations of the interface
-        new EfficiencyChart(collectAllSongsData("ArrayPlaylist"));
-        new EfficiencyChart(collectAllSongsData("LinkedNodePlaylist"));
-        new EfficiencyChart(collectDurationData("ArrayPlaylist"));
-        new EfficiencyChart(collectDurationData("LinkedNodePlaylist"));
-        new EfficiencyChart(collectAddSongData("ArrayPlaylist"));
-        new EfficiencyChart(collectAddSongData("LinkedNodePlaylist"));
-        new EfficiencyChart(collectRemoveSongData("ArrayPlaylist"));
-        new EfficiencyChart(collectRemoveSongData("LinkedNodePlaylist"));
-        new EfficiencyChart(collectPlayNextData("ArrayPlaylist"));
-        new EfficiencyChart(collectPlayNextData("LinkedNodePlaylist"));
+        new EfficiencyChart(collectAllSongsData("ArrayPlaylist"), "All Song Efficiency");
+        new EfficiencyChart(collectAllSongsData("LinkedNodePlaylist"), "All Song Efficiency");
+        new EfficiencyChart(collectDurationData("ArrayPlaylist"), "Duration Efficiency");
+        new EfficiencyChart(collectDurationData("LinkedNodePlaylist"), "Duration Efficiency");
+        new EfficiencyChart(collectAddSongData("ArrayPlaylist"), "Add Song Efficiency");
+        new EfficiencyChart(collectAddSongData("LinkedNodePlaylist"), "Add Song Efficiency");
+        new EfficiencyChart(collectRemoveSongData("ArrayPlaylist"), "Remove Song Efficiency");
+        new EfficiencyChart(collectRemoveSongData("LinkedNodePlaylist"), "Remove Song Efficiency");
+        new EfficiencyChart(collectPlayNextData("ArrayPlaylist"), "Play Next Efficiency");
+        new EfficiencyChart(collectPlayNextData("LinkedNodePlaylist"), "Play Next Efficiency");
     }
     
 }

@@ -12,8 +12,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class EfficiencyChart extends ApplicationFrame {
 
-   public EfficiencyChart(DefaultCategoryDataset dataset ) {
-      super("Efficiency Chart");
+   public EfficiencyChart(DefaultCategoryDataset dataset, String title ) {
+      super(title);
       JFreeChart lineChart = ChartFactory.createLineChart(
          "Efficiency Chart",
          "Amount of Data","Time",
