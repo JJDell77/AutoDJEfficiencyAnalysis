@@ -68,6 +68,7 @@ public class ArrayPlaylist implements Playlist {
             return false;
         }
     }
+    //quinn was here
     //JJ
     @Override
     public void add(Song song) {
