@@ -11,8 +11,6 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
-import edu.ithaca.dragon.ArrayPlaylist;
-import edu.ithaca.dragon.Playlist;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
@@ -22,7 +20,7 @@ public class TestArrayPlaylist {
     
     public Playlist sampleSongs() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
-        Playlist myPlaylist = new ArrayPlaylist(50);
+        Playlist myPlaylist = new ArrayPlaylist(50, "myPlaylist");
         for (int i=0; i<50; i++){
             myPlaylist.add(allSongs.get(i));
         }
@@ -119,7 +117,7 @@ public class TestArrayPlaylist {
     @Test
 
     public void testPlayNext() throws IOException {
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new ArrayPlaylist(10, "myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -137,7 +135,7 @@ public class TestArrayPlaylist {
      */
     @Test
     public void testIsEmpty() throws IOException{
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new ArrayPlaylist(10, "myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -163,7 +161,7 @@ public class TestArrayPlaylist {
      */
     @Test
     public void TestAdd() throws IOException{
-        Playlist myPlaylist = new ArrayPlaylist(10);
+        Playlist myPlaylist = new ArrayPlaylist(10, "myPlaylist");
         ArrayList<Song> testSongs = otherSongs();
 
         myPlaylist.add(testSongs.get(0));
@@ -187,7 +185,7 @@ public class TestArrayPlaylist {
      */
     @Test
     public void testRemove() throws IOException {
-        Playlist myPlaylist = new ArrayPlaylist(10);  
+        Playlist myPlaylist = new ArrayPlaylist(10, "myPlaylist");  
         ArrayList<Song> testSongs = otherSongs();     
 
         myPlaylist.add(testSongs.get(0));

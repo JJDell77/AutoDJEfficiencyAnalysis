@@ -1,12 +1,21 @@
 package edu.ithaca.dragon;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;
 
 public interface Playlist {
     
+    /**
+     * @return return a string representing the name of the playlist
+     */
+    String getName();
+
+    /**
+     * @return return an int representing the size of the playlist
+     */
+    int getSize();
+
     /**
      * @return return a string representing all songs in the playlist
      */
@@ -46,6 +55,11 @@ public interface Playlist {
      * @return true if song is present in the playlist
      */
     boolean contains(Song song);
+
+    /**
+     * @return the name of the most popular artist in the playlist
+     */
+    String mostPopularArtist();
     
     
 }
