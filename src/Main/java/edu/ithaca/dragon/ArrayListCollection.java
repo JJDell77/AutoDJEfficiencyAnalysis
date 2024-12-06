@@ -26,7 +26,7 @@ public class ArrayListCollection implements Collection {
     @Override
     public void addPlaylist(Playlist playlist) {
         collection.add(playlist);
-        this.size++;
+        size++;
     }
 
     public Playlist getPlaylist(String name){
@@ -105,9 +105,10 @@ public class ArrayListCollection implements Collection {
     }
 
     @Override
-    public void addEmptyPlaylist() {
-        Playlist emptyPlaylist = new LinkedNodePlaylist("Empty Playlist");
+    public void addEmptyPlaylist(String name) {
+        Playlist emptyPlaylist = new LinkedNodePlaylist(name);
         collection.add(emptyPlaylist);
+        size++;
     }
 
     @Override
