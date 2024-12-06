@@ -23,6 +23,11 @@ public HashMapLibrary(){
  * (by artist first, then by song title)
  */
 public String allSongsAndArtists(){
+    if(library.isEmpty()){
+
+        return "No Songs Avalible";
+    }
+
     StringBuilder allSongs = new StringBuilder();
 
         List<String> artists = new ArrayList<>(library.keySet());
@@ -60,7 +65,7 @@ public String songInfoString(Song song){
  * @post Add a collection of songs to the library (import)
  */
 public void importCollection(Collection collection){
-    throw new RuntimeErrorException(null, "Not Implemented.");
+   
 }
 
 /*
