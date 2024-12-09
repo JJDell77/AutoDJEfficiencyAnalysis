@@ -5,8 +5,6 @@ import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;
 
-//Author: JJ and Quinn Purpose: Implementation of the playlist interface using an Array List to store songs
-
 public class ArrayPlaylist implements Playlist {
 
     private ArrayList<Song> playlist;
@@ -117,6 +115,11 @@ public class ArrayPlaylist implements Playlist {
         return mostPopularArtist;
     }
 
-    
+    public Song getSongAtIndex(int index) {
+        if (index < 0 || index >= playlist.size()) {
+            throw new IndexOutOfBoundsException("Index is out of range: " + index);
+        }
+        return playlist.get(index);
+    }
     
 }

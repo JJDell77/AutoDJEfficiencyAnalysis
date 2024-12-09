@@ -9,20 +9,23 @@ import java.util.NoSuchElementException;
 import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
-//Author: JJ Purpose: Implementation of the collection interface using an Array List to store playlists
-
 public class ArrayListCollection implements Collection {
     
-    private ArrayList<Playlist> collection;
+    ArrayList<Playlist> collection;
     private int size;
+    private String name;
 
-    public ArrayListCollection(int capacity){
+    public ArrayListCollection(int capacity,String name){
        this.collection = new ArrayList<>();
        this.size = 0;
+       this.name = name;
     }
 
     public int getSize(){
         return size;
+    }
+    public String getName(){
+        return name;
     }
 
     @Override
@@ -39,6 +42,13 @@ public class ArrayListCollection implements Collection {
             }
         }
         throw new NoSuchElementException("Playlist Not Found.");
+    }
+    public Playlist getPlaylistIndex(int toFind) {
+        if (toFind < 0 || toFind >= collection.size()) {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
+        }
+    
+        return collection.get(toFind);
     }
 
     @Override

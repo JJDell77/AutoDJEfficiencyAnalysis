@@ -140,7 +140,14 @@ public class HashMapCollection implements Collection {
        Playlist playlist = playlists.get(playlistName);
        return "Playlist '" + playlistName + "' has " + playlist.getSize() + " songs with a total duration of " + playlist.duration() + " mins."; // Assuming the Playlist class has getSize() and duration() methods
    }
-}
+
+
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
+    }
 
 
   

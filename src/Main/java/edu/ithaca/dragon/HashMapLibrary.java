@@ -10,7 +10,7 @@ import edu.ithaca.dragon.autodj.Song;
 
 public class HashMapLibrary implements Library {
 
-private HashMap<String, HashMap<String,Integer>> library; 
+private HashMap<String, Collection> library; 
 
 public HashMapLibrary(){
 
@@ -64,7 +64,7 @@ public String songInfoString(Song song){
  * @post Add a collection of songs to the library (import)
  */
 public void importCollection(Collection collection){
-   
+   library.put(collection.getName(), collection);
 }
 
 /*
@@ -72,6 +72,5 @@ public void importCollection(Collection collection){
  * Remove given songs from the library. Also remove these songs from any playlist in which they occur. 
  */
 public void discontinueCollection(Collection collection){
-    throw new RuntimeErrorException(null, "Not Implemented.");
-}
+    library.remove(collection.getName());
 }

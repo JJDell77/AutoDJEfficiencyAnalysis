@@ -5,7 +5,8 @@ import java.io.IOException;
 import edu.ithaca.dragon.autodj.Song;
 
 public interface Collection {
-
+    String getName();
+    
     /**
      * @post adds a playlist of songs to the collection
      */
