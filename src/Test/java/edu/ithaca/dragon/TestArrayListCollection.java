@@ -59,7 +59,7 @@ public class TestArrayListCollection {
         "Playlist2 Duration: 24 minutes\n"+
         "Playlist3 Duration: 20 minutes\n"+
         "Total Duration: 68 minutes.");
-        Collection newCollection = new ArrayListCollection(5);
+        Collection newCollection = new ArrayListCollection(5, "newCollection");
         assertThrows(NoSuchElementException.class, () -> newCollection.playlistNamesAndDurations(), "Collection is empty");  
     }
 
@@ -73,7 +73,7 @@ public class TestArrayListCollection {
         assertEquals("This playlist has 5 songs with a duration of 20 minutes. The most popular artist in this playlist is The Gunpoets"
                                 , myCollection.playlistInfo("Playlist3"));
         assertThrows(NoSuchElementException.class, () -> myCollection.playlistInfo("NOT A NAME"), "Playlist not found");  
-        Collection newCollection = new ArrayListCollection(5);
+        Collection newCollection = new ArrayListCollection(5, "newCollection");
         assertThrows(NoSuchElementException.class, () -> newCollection.playlistInfo("mY jAmS"), "Collection is empty");  
 
     }
