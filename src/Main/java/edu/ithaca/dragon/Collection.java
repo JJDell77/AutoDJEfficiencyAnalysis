@@ -1,6 +1,8 @@
 package edu.ithaca.dragon;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.ithaca.dragon.autodj.Song;
 
@@ -58,6 +60,5 @@ public interface Collection {
      * @return size of collection
      */
     int getSize();
-
     
 }

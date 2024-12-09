@@ -15,7 +15,7 @@ public class ArrayListCollection implements Collection {
     private int size;
     private String name;
 
-    public ArrayListCollection(int capacity,String name){
+    public ArrayListCollection(int capacity, String name){
        this.collection = new ArrayList<>();
        this.size = 0;
        this.name = name;
@@ -154,4 +154,5 @@ public class ArrayListCollection implements Collection {
             playlist.remove(song);
         }
     }
+    
 }

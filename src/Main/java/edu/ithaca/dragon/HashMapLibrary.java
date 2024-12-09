@@ -22,23 +22,22 @@ public HashMapLibrary(){
  * @return a string representing all songs in the library in alphabetical order 
  * (by artist first, then by song title)
  */
-public String allSongsAndArtists(){
+public String allSongsAndArtists() {
     if (library.isEmpty()) {
         return "No Songs Available";
     }
 
     StringBuilder allSongs = new StringBuilder();
-    List<String> artists = new ArrayList<>(library.keySet());
-    Collections.sort(artists);
+    List<String> artistNames = new ArrayList<>(library.keySet());
+    Collections.sort(artistNames);
 
-    for (int i = 0; i < artists.size(); i++) {
-        Collection artistsSongs = artists.get(i);
+    for (String artistName : artistNames) {
+        Collection artistCollection = library.get(artistName);
 
+        if (artistCollection != null) {
+            List<Song> songs = artistCollection.getSongs(); // Assuming Collection has a getSongs method
+            Collections.sort(songs, (s1, s2) -> s1.getTitle().compareToIgnoreCase(s2.getTitle()));
 
-    for (int i = 0; i < artists.size(); i++) {
-        Collection artistsSongs = artists.add(i);
-
-        if (songs != null) {
             for (Song song : songs) {
                 allSongs.append(song.getArtist()).append(" - ").append(song.getTitle()).append("\n");
             }

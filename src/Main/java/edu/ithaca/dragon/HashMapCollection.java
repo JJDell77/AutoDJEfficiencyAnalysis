@@ -14,10 +14,12 @@ import edu.ithaca.dragon.autodj.data.SongDataIO;
 
 public class HashMapCollection implements Collection {
    private Map<String, Playlist> playlists;
+   private String name;
 
 
-   public HashMapCollection() {
+   public HashMapCollection(String name) {
        playlists = new HashMap<>();
+       this.name = name;
    }
 
 
@@ -144,10 +146,10 @@ public class HashMapCollection implements Collection {
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+        return name;
     }
-    }
+
+}
 
 
   
