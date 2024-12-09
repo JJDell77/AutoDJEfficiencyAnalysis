@@ -1,8 +1,6 @@
 package edu.ithaca.dragon;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import edu.ithaca.dragon.autodj.Song;
 
