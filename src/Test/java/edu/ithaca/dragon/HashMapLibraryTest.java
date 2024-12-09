@@ -54,9 +54,9 @@ public class HashMapLibraryTest {
 
     @Test
     void testSongInfoString() throws IOException {
-        // Use the first song from the sample collection for testing
-        Collection sampleCollection = sampleCollection();
-        Song testSong = sampleCollection.getPlaylists().get(0).getSongs().get(0); // Get a song
+        Library library = sampleLibrary();
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
+        Song testSong = allSongs.get(0);
 
         String songInfo = library.songInfoString(testSong);
         assertNotNull(songInfo);
@@ -65,7 +65,7 @@ public class HashMapLibraryTest {
 
     @Test
     void testImportCollection() throws IOException {
-        // Create a new collection using sampleCollection
+        Library library = sampleLibrary();
         Collection newCollection = sampleCollection();
         library.importCollection(newCollection);
 
@@ -75,7 +75,7 @@ public class HashMapLibraryTest {
 
     @Test
     void testDiscontinueCollection() throws IOException {
-        // Remove the sample collection
+        Library library = sampleLibrary();
         Collection sampleCollection = sampleCollection();
         library.discontinueCollection(sampleCollection);
 
