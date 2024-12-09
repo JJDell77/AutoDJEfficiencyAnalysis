@@ -32,7 +32,7 @@ public class TestArrayListCollection {
         for (int i=10; i<15; i++){
             playlist3.add(allSongs.get(i));
         }
-        Collection myCollection = new ArrayListCollection(5);
+        Collection myCollection = new ArrayListCollection(5, "myCollection");
         myCollection.addPlaylist(playlist1);
         myCollection.addPlaylist(playlist2);
         myCollection.addPlaylist(playlist3);
