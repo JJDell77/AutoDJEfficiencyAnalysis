@@ -11,40 +11,41 @@ import edu.ithaca.dragon.autodj.Song;
 public class HashMapLibrary implements Library {
 
 private HashMap<String, Collection> library; 
+private HashMap<String, Collection> artists; 
 
 public HashMapLibrary(){
 
     this.library = new HashMap<>();
-   
+    this.artists = new HashMap<>();
 }
 /*
  * @return a string representing all songs in the library in alphabetical order 
  * (by artist first, then by song title)
  */
 public String allSongsAndArtists(){
-    if(library.isEmpty()){
-
-        return "No Songs Avalible";
+    if (library.isEmpty()) {
+        return "No Songs Available";
     }
 
     StringBuilder allSongs = new StringBuilder();
+    List<String> artists = new ArrayList<>(library.keySet());
+    Collections.sort(artists);
 
-        List<String> artists = new ArrayList<>(library.keySet());
-        Collections.sort(artists);
+    for (int i = 0; i < artists.size(); i++) {
+        Collection artistsSongs = artists.get(i);
 
-        for (String artist : artists) {
-            HashMap<String, Integer> songs = library.get(artist);
 
-            if (songs != null) {
-                List<String> songTitles = new ArrayList<>(songs.keySet());
-                Collections.sort(songTitles);
+    for (int i = 0; i < artists.size(); i++) {
+        Collection artistsSongs = artists.add(i);
 
-                for (String song : songTitles) {
-                    allSongs.append(artist).append(" - ").append(song).append("\n");
-                }
+        if (songs != null) {
+            for (Song song : songs) {
+                allSongs.append(song.getArtist()).append(" - ").append(song.getTitle()).append("\n");
             }
         }
-        return allSongs.toString().trim(); 
+    }
+
+    return allSongs.toString().trim();
 }
 
 /*
