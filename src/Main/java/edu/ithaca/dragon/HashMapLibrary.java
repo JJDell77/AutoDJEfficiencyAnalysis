@@ -1,4 +1,5 @@
 package edu.ithaca.dragon;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public String allSongsAndArtists() {
     * @post Add a collection of songs to the library (import)
     */
     public void importCollection(Collection collection){
-    library.put(collection.getName(), collection);
+        library.put(collection.getName(), collection);
     }
 
     /*
