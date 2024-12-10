@@ -1,8 +1,15 @@
 package edu.ithaca.dragon;
 
+import java.util.List;
+
 import edu.ithaca.dragon.autodj.Song;
 
 public interface Library {
+
+/**
+ * @return a list of all collections currently in the library.
+ */
+List<Collection> getCollections();
     
 /*
  * @return a string representing all songs in the library in alphabetical order 

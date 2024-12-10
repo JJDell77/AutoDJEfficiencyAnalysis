@@ -7,6 +7,7 @@ import edu.ithaca.dragon.autodj.Song;
 import edu.ithaca.dragon.autodj.data.SongDataIO;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HashMapLibraryTest {
@@ -68,8 +69,8 @@ public class HashMapLibraryTest {
         Library library = sampleLibrary();
         Collection newCollection = sampleCollection();
         library.importCollection(newCollection);
-        String result = library.allSongsAndArtists();
-        assertTrue(result.contains("newCollection")); // Verify Playlist2's songs are added
+        List<Collection> collections = library.getCollections();
+        assertTrue(collections.contains(newCollection)); // Verify Playlist2's songs are added
     }
 
     @Test

@@ -15,6 +15,14 @@ public class HashMapLibrary implements Library {
         this.library = new HashMap<>();
     }
 
+    /**
+     * @return a list of all collections currently in the library.
+     */
+    public List<Collection> getCollections() {
+        return new ArrayList<>(library.values());
+    }
+
+
     /*
     * @return a string representing all songs in the library in alphabetical order 
     * (by artist first, then by song title)
