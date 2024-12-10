@@ -19,7 +19,7 @@ public class HashMapLibrary implements Library {
     /*
     * @return a string representing all songs in the library in alphabetical order 
     * (by artist first, then by song title)
-    */
+    *
     public String allSongsAndArtists() {
         if (library.isEmpty()) {
             return "No Songs Available";
@@ -44,6 +44,34 @@ public class HashMapLibrary implements Library {
 
         return allSongs.toString().trim();
         }
+        */
+
+        public String allSongsAndArtists() {
+            if (library.isEmpty()) {
+                return "No Songs Available";
+            }
+        
+            StringBuilder allSongs = new StringBuilder();
+            List<String> artistNames = new ArrayList<>(library.keySet());
+            Collections.sort(artistNames);
+        
+            for (String artistName : artistNames) {
+                Collection artistCollection = library.get(artistName);
+        
+                if (artistCollection != null) {
+                    allSongs.append("Artist: ").append(artistName).append("\n");
+                    ArrayList<String> songs = artistCollection.getSongsAndArtists();
+                    Collections.sort(songs);
+        
+                    for (String song : songs) {
+                        allSongs.append("  ").append(song).append("\n");
+                    }
+                }
+            }
+        
+            return allSongs.toString().trim();
+        }
+        
 
         /*
         * @return information of a song

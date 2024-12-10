@@ -46,7 +46,7 @@ public class HashMapLibraryTest {
         Library library = sampleLibrary();
         String result = library.allSongsAndArtists();
         assertNotNull(result);
-        assertTrue(result.contains("Playlist1")); // Check if Playlist1's songs appear in the output
+        assertTrue(result.contains("John Brown's Body - Resonate")); // Check if Playlist1's songs appear in the output
     }
 
     @Test
