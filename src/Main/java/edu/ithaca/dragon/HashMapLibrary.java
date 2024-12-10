@@ -18,58 +18,32 @@ public class HashMapLibrary implements Library {
     /*
     * @return a string representing all songs in the library in alphabetical order 
     * (by artist first, then by song title)
-    *
+    */
     public String allSongsAndArtists() {
         if (library.isEmpty()) {
-            return "No Songs Available";
+            throw new NoSuchElementException("Library is empty");
         }
-
+    
         StringBuilder allSongs = new StringBuilder();
         List<String> artistNames = new ArrayList<>(library.keySet());
         Collections.sort(artistNames);
-
+    
         for (String artistName : artistNames) {
             Collection artistCollection = library.get(artistName);
-
+    
             if (artistCollection != null) {
-                ArrayList<String> songs = artistCollection.getSongsAndArtists(); // Assuming Collection has a getSongs method
+                allSongs.append("Artist: ").append(artistName).append("\n");
+                ArrayList<String> songs = artistCollection.getSongsAndArtists();
                 Collections.sort(songs);
-
+    
                 for (String song : songs) {
-                    allSongs.append(song).append("\n");
+                    allSongs.append("  ").append(song).append("\n");
                 }
             }
         }
-
+    
         return allSongs.toString().trim();
-        }
-        */
-
-        public String allSongsAndArtists() {
-            if (library.isEmpty()) {
-                throw new NoSuchElementException("Library is empty");
-            }
-        
-            StringBuilder allSongs = new StringBuilder();
-            List<String> artistNames = new ArrayList<>(library.keySet());
-            Collections.sort(artistNames);
-        
-            for (String artistName : artistNames) {
-                Collection artistCollection = library.get(artistName);
-        
-                if (artistCollection != null) {
-                    allSongs.append("Artist: ").append(artistName).append("\n");
-                    ArrayList<String> songs = artistCollection.getSongsAndArtists();
-                    Collections.sort(songs);
-        
-                    for (String song : songs) {
-                        allSongs.append("  ").append(song).append("\n");
-                    }
-                }
-            }
-        
-            return allSongs.toString().trim();
-        }
+    }
         
 
         /*

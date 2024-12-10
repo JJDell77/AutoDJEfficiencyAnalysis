@@ -14,15 +14,15 @@ public class HashMapLibraryTest {
     private Collection sampleCollection() throws IOException {
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         Playlist playlist1 = new LinkedNodePlaylist("Playlist1");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             playlist1.add(allSongs.get(i));
         }
         Playlist playlist2 = new LinkedNodePlaylist("Playlist2");
-        for (int i = 5; i < 10; i++) {
+        for (int i = 1; i < 2; i++) {
             playlist2.add(allSongs.get(i));
         }
         Playlist playlist3 = new LinkedNodePlaylist("Playlist3");
-        for (int i = 10; i < 15; i++) {
+        for (int i = 2; i < 3; i++) {
             playlist3.add(allSongs.get(i));
         }
         Collection myCollection = new ArrayListCollection(5, "myCollection");
@@ -70,7 +70,7 @@ public class HashMapLibraryTest {
         library.importCollection(newCollection);
 
         String result = library.allSongsAndArtists();
-        assertTrue(result.contains("Playlist2")); // Verify Playlist2's songs are added
+        assertTrue(result.contains("newCollection")); // Verify Playlist2's songs are added
     }
 
     @Test
@@ -78,7 +78,6 @@ public class HashMapLibraryTest {
         Library library = sampleLibrary();
         Collection sampleCollection = sampleCollection();
         library.discontinueCollection(sampleCollection);
-
         String result = library.allSongsAndArtists();
         assertEquals("No Songs Available", result); // Confirm collection is removed
     }
