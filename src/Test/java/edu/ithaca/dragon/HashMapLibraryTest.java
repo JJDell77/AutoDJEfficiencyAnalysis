@@ -42,16 +42,18 @@ public class HashMapLibraryTest {
     }
 
     @Test
-    void testAllSongsAndArtists() throws IOException {
+    public void testAllSongsAndArtists() throws IOException {
         Library library = sampleLibrary();
+        System.out.println(library);
         String result = library.allSongsAndArtists();
-        System.out.println(result);
+        System.out.println(library);
+
         assertNotNull(result);
-        assertTrue(result.contains("Playlist1")); // Check if Playlist1's songs appear in the output
+        assertTrue(result.contains("John Brown's Body - Resonate")); // Check if Playlist1's songs appear in the output
     }
 
     @Test
-    void testSongInfoString() throws IOException {
+    public void testSongInfoString() throws IOException {
         Library library = sampleLibrary();
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         Song testSong = allSongs.get(0);
@@ -62,7 +64,7 @@ public class HashMapLibraryTest {
     }
 
     @Test
-    void testImportCollection() throws IOException {
+    public void testImportCollection() throws IOException {
         Library library = sampleLibrary();
         Collection newCollection = sampleCollection();
         library.importCollection(newCollection);
@@ -71,7 +73,7 @@ public class HashMapLibraryTest {
     }
 
     @Test
-    void testDiscontinueCollection() throws IOException {
+    public void testDiscontinueCollection() throws IOException {
         Library library = sampleLibrary();
         Collection sampleCollection = sampleCollection();
         library.discontinueCollection(sampleCollection);
