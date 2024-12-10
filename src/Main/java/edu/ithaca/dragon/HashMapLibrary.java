@@ -2,6 +2,7 @@ package edu.ithaca.dragon;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import java.util.Collections;
 import edu.ithaca.dragon.autodj.Song;
@@ -9,11 +10,9 @@ import edu.ithaca.dragon.autodj.Song;
 public class HashMapLibrary implements Library {
 
     private HashMap<String, Collection> library; 
-    private HashMap<String, Collection> artists; 
 
     public HashMapLibrary(){
         this.library = new HashMap<>();
-        this.artists = new HashMap<>();
     }
 
     /*
@@ -48,7 +47,7 @@ public class HashMapLibrary implements Library {
 
         public String allSongsAndArtists() {
             if (library.isEmpty()) {
-                return "No Songs Available";
+                throw new NoSuchElementException("Library is empty");
             }
         
             StringBuilder allSongs = new StringBuilder();

@@ -152,9 +152,14 @@ public class HashMapCollection implements Collection {
 
     @Override
     public ArrayList<String> getSongsAndArtists() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSongsAndArtists'");
+        ArrayList<String> allSongsAndArtists = new ArrayList<>();
+        for (Playlist playlist : playlists.values()) {
+            ArrayList<String> playlistSongsAndArtists = playlist.allSongsAndArtists();
+            allSongsAndArtists.addAll(playlistSongsAndArtists);
+        }
+        return allSongsAndArtists;
     }
+
 
 }
 
