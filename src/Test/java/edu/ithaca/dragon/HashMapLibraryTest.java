@@ -45,6 +45,7 @@ public class HashMapLibraryTest {
     void testAllSongsAndArtists() throws IOException {
         Library library = sampleLibrary();
         String result = library.allSongsAndArtists();
+        System.out.println(result);
         assertNotNull(result);
         assertTrue(result.contains("Playlist1")); // Check if Playlist1's songs appear in the output
     }
@@ -65,7 +66,6 @@ public class HashMapLibraryTest {
         Library library = sampleLibrary();
         Collection newCollection = sampleCollection();
         library.importCollection(newCollection);
-
         String result = library.allSongsAndArtists();
         assertTrue(result.contains("Playlist2")); // Verify Playlist2's songs are added
     }
