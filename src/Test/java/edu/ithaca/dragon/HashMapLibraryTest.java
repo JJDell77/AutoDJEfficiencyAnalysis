@@ -68,7 +68,6 @@ public class HashMapLibraryTest {
         Library library = sampleLibrary();
         Collection newCollection = sampleCollection();
         library.importCollection(newCollection);
-
         String result = library.allSongsAndArtists();
         assertTrue(result.contains("newCollection")); // Verify Playlist2's songs are added
     }
