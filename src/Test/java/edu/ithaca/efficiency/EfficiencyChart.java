@@ -39,6 +39,6 @@ public class EfficiencyChart extends ApplicationFrame {
    }
    
    public static void main( String[ ] args ) {
-      new EfficiencyChart(createExampleDataset());
+      new EfficiencyChart(createExampleDataset(), "Data");
    }
 }
