@@ -12,7 +12,6 @@ import java.util.List;
 
 public class HashMapLibraryTest {
 
-    // Helper method to create sampleCollection (copied from your code)
     private Collection sampleCollection() throws IOException {
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         Playlist playlist1 = new LinkedNodePlaylist("Playlist1");
@@ -34,7 +33,6 @@ public class HashMapLibraryTest {
         return myCollection;
     }
 
-    @BeforeEach
     private Library sampleLibrary() throws IOException {
         HashMapLibrary library = new HashMapLibrary();
 
