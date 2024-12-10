@@ -154,5 +154,17 @@ public class ArrayListCollection implements Collection {
             playlist.remove(song);
         }
     }
+
+    public ArrayList<String> getSongsAndArtists(){
+        ArrayList<String> allSongsString = new ArrayList<>();
+        for (Playlist playlist : collection) {
+            ArrayList<String> thisPlaylist = playlist.allSongsAndArtists();
+            for (String song : thisPlaylist){
+                allSongsString.add(song);
+            }
+            
+        }
+        return allSongsString;
+    }
     
 }

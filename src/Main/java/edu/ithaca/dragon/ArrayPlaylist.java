@@ -121,5 +121,16 @@ public class ArrayPlaylist implements Playlist {
         }
         return playlist.get(index);
     }
+
+    public ArrayList<String> allSongsAndArtists() {
+        ArrayList<String> allSongsString = new ArrayList<>();
+    
+        for (int songIndex = 0; songIndex < this.size; songIndex++) {
+            Song currentSong = playlist.get(songIndex);
+            allSongsString.add(currentSong.getArtist() + " - " + currentSong.getTitle());
+        }
+        return allSongsString;
+    }
+    
     
 }

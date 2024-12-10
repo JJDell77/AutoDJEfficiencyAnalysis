@@ -1,5 +1,6 @@
 package edu.ithaca.dragon;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import edu.ithaca.dragon.autodj.Song;
@@ -60,6 +61,11 @@ public interface Playlist {
      * @return the name of the most popular artist in the playlist
      */
     String mostPopularArtist();
+
+    /**
+     * @return and arrayList of strings of all songs and artists
+     */
+    ArrayList<String> allSongsAndArtists();
     
     
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import javax.management.RuntimeErrorException;
 
@@ -11,68 +12,69 @@ import edu.ithaca.dragon.autodj.Song;
 
 public class HashMapLibrary implements Library {
 
-private HashMap<String, Collection> library; 
-private HashMap<String, Collection> artists; 
+    private HashMap<String, Collection> library; 
+    private HashMap<String, Collection> artists; 
 
-public HashMapLibrary(){
-
-    this.library = new HashMap<>();
-    this.artists = new HashMap<>();
-}
-/*
- * @return a string representing all songs in the library in alphabetical order 
- * (by artist first, then by song title)
- */
-public String allSongsAndArtists() {
-    if (library.isEmpty()) {
-        return "No Songs Available";
+    public HashMapLibrary(){
+        this.library = new HashMap<>();
+        this.artists = new HashMap<>();
     }
 
-    StringBuilder allSongs = new StringBuilder();
-    List<String> artistNames = new ArrayList<>(library.keySet());
-    Collections.sort(artistNames);
+    /*
+    * @return a string representing all songs in the library in alphabetical order 
+    * (by artist first, then by song title)
+    */
+    public String allSongsAndArtists() {
+        if (library.isEmpty()) {
+            return "No Songs Available";
+        }
 
-    for (String artistName : artistNames) {
-        Collection artistCollection = library.get(artistName);
+        StringBuilder allSongs = new StringBuilder();
+        List<String> artistNames = new ArrayList<>(library.keySet());
+        Collections.sort(artistNames);
 
-        if (artistCollection != null) {
-            List<Song> songs = artistCollection.getSongs(); // Assuming Collection has a getSongs method
-            Collections.sort(songs, (s1, s2) -> s1.getTitle().compareToIgnoreCase(s2.getTitle()));
+        for (String artistName : artistNames) {
+            Collection artistCollection = library.get(artistName);
 
-            for (Song song : songs) {
-                allSongs.append(song.getArtist()).append(" - ").append(song.getTitle()).append("\n");
+            if (artistCollection != null) {
+                ArrayList<String> songs = artistCollection.getSongsAndArtists(); // Assuming Collection has a getSongs method
+                Collections.sort(songs);
+
+                for (String song : songs) {
+                    allSongs.append(song).append("\n");
+                }
             }
         }
-    }
 
-    return allSongs.toString().trim();
-    }
+        return allSongs.toString().trim();
+        }
 
-    /*
-    * @return information of a song
-    * Retrieve information about a song within the library
-    */
-    public String songInfoString(Song song){
-        StringBuilder songInfo = new StringBuilder();
-        songInfo.append(song.toString()).append("-\n");
-        songInfo.append(song.getDuration()).append("\n");
-        songInfo.append(song.getPlayCount()).append("\n");
-        songInfo.append(song.getSpotifyDanceability()).append("\n");
-        return songInfo.toString();
-    }
+        /*
+        * @return information of a song
+        * Retrieve information about a song within the library
+        */
+        public String songInfoString(Song song){
+            StringBuilder songInfo = new StringBuilder();
+            songInfo.append(song.toString()).append("-\n");
+            songInfo.append(song.getDuration()).append("\n");
+            songInfo.append(song.getPlayCount()).append("\n");
+            songInfo.append(song.getSpotifyDanceability()).append("\n");
+            return songInfo.toString();
+        }
 
-    /*
-    * @post Add a collection of songs to the library (import)
-    */
-    public void importCollection(Collection collection){
-        library.put(collection.getName(), collection);
-    }
+        /*
+        * @post Add a collection of songs to the library (import)
+        */
+        public void importCollection(Collection collection){
+            library.put(collection.getName(), collection);
+        }
 
-    /*
-    * @post Remove a collection of songs from the library (discontinue)
-    * Remove given songs from the library. Also remove these songs from any playlist in which they occur. 
-    */
-    public void discontinueCollection(Collection collection){
-        library.remove(collection.getName());
-    }
+        /*
+        * @post Remove a collection of songs from the library (discontinue)
+        * Remove given songs from the library. Also remove these songs from any playlist in which they occur. 
+        */
+        public void discontinueCollection(Collection collection){
+            library.remove(collection.getName());
+        }
+
 }
