@@ -149,6 +149,13 @@ public class HashMapCollection implements Collection {
         return name;
     }
 
+
+    @Override
+    public ArrayList<String> getSongsAndArtists() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSongsAndArtists'");
+    }
+
 }
 
 

@@ -1,6 +1,7 @@
 package edu.ithaca.dragon;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -157,6 +158,12 @@ public class LinkedNodePlaylist implements Playlist {
         }
 
         return mostPopularArtist;
+    }
+
+    @Override
+    public ArrayList<String> allSongsAndArtists() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'allSongsAndArtists'");
     }
     
 }
