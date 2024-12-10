@@ -162,8 +162,13 @@ public class LinkedNodePlaylist implements Playlist {
 
     @Override
     public ArrayList<String> allSongsAndArtists() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'allSongsAndArtists'");
+        ArrayList<String> allSongsString = new ArrayList<>();
+        LinkedNode<Song> current = front;
+        while (current != null) {
+            Song currentSong = current.getItem();
+            allSongsString.add(currentSong.getArtist() + " - " + currentSong.getTitle());
+        }
+        return allSongsString;
     }
     
 }
