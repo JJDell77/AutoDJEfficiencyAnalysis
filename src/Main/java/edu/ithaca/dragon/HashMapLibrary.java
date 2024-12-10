@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-
-import javax.management.RuntimeErrorException;
-
 import edu.ithaca.dragon.autodj.Song;
 
 public class HashMapLibrary implements Library {
