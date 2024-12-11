@@ -27,20 +27,44 @@ public class HashMapLibrary implements Library {
     * @return a string representing all songs in the library in alphabetical order 
     * (by artist first, then by song title)
     */
+    
+    public String allSongsAndArtists() {
+        if (library.isEmpty()) {
+            return "Library is empty";
+        }
+    
+        StringBuilder allSongs = new StringBuilder();
+        ArrayList<String> allSongsList = new ArrayList<>();
+    
+        for (Collection collection : library.values()) {
+            for (Playlist playlist : collection.getPlaylists()) {
+                allSongsList.addAll(playlist.allSongsAndArtists());
+            }
+        }
+    
+        Collections.sort(allSongsList);
+        for (String song : allSongsList) {
+            allSongs.append(song).append("\n");
+        }
+    
+        return allSongs.toString().trim();
+    }
+    
+
+    /*
     public String allSongsAndArtists() {
         if (library.isEmpty()) {
             throw new NoSuchElementException("Library is empty");
         }
     
         StringBuilder allSongs = new StringBuilder();
-        List<String> artistNames = new ArrayList<>(library.keySet());
-        Collections.sort(artistNames);
+        ArrayList<Collection> collections = new ArrayList<>(library.values());
     
-        for (String artistName : artistNames) {
-            Collection artistCollection = library.get(artistName);
+        for (int i = 0; i < collections.size(); i ++) {
+            Playlist playlist = collections.getPlaylistIndex(i);
     
             if (artistCollection != null) {
-                allSongs.append("Artist: ").append(artistName).append("\n");
+                allSongs.append("Artist: ").append(collection).append("\n");
                 ArrayList<String> songs = artistCollection.getSongsAndArtists();
                 Collections.sort(songs);
     
@@ -52,6 +76,7 @@ public class HashMapLibrary implements Library {
     
         return allSongs.toString().trim();
     }
+        */
         
 
         /*

@@ -160,6 +160,10 @@ public class HashMapCollection implements Collection {
         return allSongsAndArtists;
     }
 
+    @Override
+    public List<Playlist> getPlaylists() {
+        return new ArrayList<>(playlists.values());
+    }
 
 }
 

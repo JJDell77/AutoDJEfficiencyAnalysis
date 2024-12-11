@@ -51,6 +51,14 @@ public class ArrayListCollection implements Collection {
         return collection.get(toFind);
     }
 
+    /*
+     * returns all of the playlists in a collection
+     */
+    public List<Playlist> getPlaylists() {
+        return new ArrayList<>(collection); // Return a copy of the playlist list to prevent modification
+    }
+
+
     @Override
     public String playlistNamesAndDurations() {
         if (size == 0){

@@ -2,6 +2,7 @@ package edu.ithaca.dragon;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.ithaca.dragon.autodj.Song;
 
@@ -64,5 +65,10 @@ public interface Collection {
      * @return and arrayList of strings of all songs and artists
      */
     ArrayList<String> getSongsAndArtists();
+
+     /*
+     * returns all of the playlists in a collection
+     */
+    List<Playlist> getPlaylists();
     
 }
